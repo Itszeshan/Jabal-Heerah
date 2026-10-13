@@ -1,0 +1,209 @@
+[
+  {
+    "id": "denting",
+    "slug": "car-denting",
+    "name": {
+      "en": "Car denting",
+      "ar": "سمكرة السيارات"
+    },
+    "short": {
+      "en": "Panel dents pulled and filled before paint.",
+      "ar": "سحب الخدوش ومعجون القطع قبل الدهان."
+    },
+    "body": {
+      "en": "Book denting for a damaged panel. The shop confirms the work and the price on WhatsApp after seeing the car or photos. PLACEHOLDER: add what is included and what is not.",
+      "ar": "احجز السمكرة لقطعة متضررة. المحل يؤكد العمل والسعر على واتساب بعد رؤية السيارة أو الصور. نص مؤقت: أضف ما يشمله العمل وما لا يشمله."
+    },
+    "startingPrice": null,
+    "duration": {
+      "en": "",
+      "ar": ""
+    },
+    "image": "/services/car-denting.webp",
+    "featured": true
+  },
+  {
+    "id": "full-painting",
+    "slug": "full-body-painting",
+    "name": {
+      "en": "Full body painting",
+      "ar": "دهان السيارة كامل"
+    },
+    "short": {
+      "en": "A full repaint, quoted from the car and the colour.",
+      "ar": "إعادة دهان كامل، والسعر حسب السيارة واللون."
+    },
+    "body": {
+      "en": "Ask for a full-body paint quote. Send the car make, model, year, and colour on WhatsApp. PLACEHOLDER: the owner will add the process and what the quote covers.",
+      "ar": "اطلب عرض سعر لدهان السيارة كامل. أرسل نوع السيارة والموديل والسنة واللون على واتساب. نص مؤقت: صاحب المحل يضيف خطوات العمل وما يشمله العرض."
+    },
+    "startingPrice": null,
+    "duration": {
+      "en": "",
+      "ar": ""
+    },
+    "image": "/services/full-body-painting.webp",
+    "featured": true
+  },
+  {
+    "id": "panel-painting",
+    "slug": "panel-painting",
+    "name": {
+      "en": "Panel / per-piece painting",
+      "ar": "دهان قطعة"
+    },
+    "short": {
+      "en": "One panel or piece painted and blended.",
+      "ar": "دهان قطعة واحدة مع التدرج."
+    },
+    "body": {
+      "en": "Book painting for a single panel, such as a door, fender, or bumper. The quote depends on the piece and the colour. PLACEHOLDER: list the pieces the shop paints.",
+      "ar": "احجز دهان قطعة واحدة مثل باب أو رفرف أو صدام. العرض يعتمد على القطعة واللون. نص مؤقت: اذكر القطع التي يدهنها المحل."
+    },
+    "startingPrice": null,
+    "duration": {
+      "en": "",
+      "ar": ""
+    },
+    "image": "/services/panel-painting.webp",
+    "featured": true
+  },
+  {
+    "id": "scratch-repair",
+    "slug": "scratch-repair",
+    "name": {
+      "en": "Scratch repair",
+      "ar": "إصلاح الخدوش"
+    },
+    "short": {
+      "en": "Scratches assessed for polish or paint.",
+      "ar": "تقييم الخدش للتلميع أو الدهان."
+    },
+    "body": {
+      "en": "Send photos of the scratch. The shop will say whether it needs polishing or paint. PLACEHOLDER: add any limits the shop wants customers to know.",
+      "ar": "أرسل صور الخدش. المحل يوضح إن كان يحتاج تلميعاً أو دهاناً. نص مؤقت: أضف أي حدود يريد المحل أن يعرفها الزبون."
+    },
+    "startingPrice": null,
+    "duration": {
+      "en": "",
+      "ar": ""
+    },
+    "image": "/services/scratch-repair.webp",
+    "featured": false
+  },
+  {
+    "id": "colour-matching",
+    "slug": "colour-matching",
+    "name": {
+      "en": "Colour matching",
+      "ar": "مطابقة اللون"
+    },
+    "short": {
+      "en": "Paint mixed to the car's colour code or a sample.",
+      "ar": "خلط الدهان حسب كود اللون أو عينة من السيارة."
+    },
+    "body": {
+      "en": "Bring the colour code or the car. The counter mixes the colour. PLACEHOLDER: explain how customers should read the code, and whether a sample panel is required.",
+      "ar": "أحضر كود اللون أو السيارة. الكاشير يخلط اللون. نص مؤقت: اشرح كيف يقرأ الزبون الكود، وهل يلزم لوح عينة."
+    },
+    "startingPrice": null,
+    "duration": {
+      "en": "",
+      "ar": ""
+    },
+    "image": "/services/colour-matching.webp",
+    "featured": true
+  },
+  {
+    "id": "polishing",
+    "slug": "polishing-and-compounding",
+    "name": {
+      "en": "Polishing and compounding",
+      "ar": "التلميع والكمبوند"
+    },
+    "short": {
+      "en": "Machine polish to cut haze and restore gloss.",
+      "ar": "تلميع آلي لإزالة الغبش وإرجاع اللمعان."
+    },
+    "body": {
+      "en": "Book polishing or compounding. The quote depends on the paint condition. PLACEHOLDER: say which packages the shop offers.",
+      "ar": "احجز التلميع أو الكمبوند. العرض يعتمد على حالة الدهان. نص مؤقت: اذكر الباقات التي يقدمها المحل."
+    },
+    "startingPrice": null,
+    "duration": {
+      "en": "",
+      "ar": ""
+    },
+    "image": "/services/polishing-and-compounding.webp",
+    "featured": true
+  },
+  {
+    "id": "detailing",
+    "slug": "detailing-and-cleaning",
+    "name": {
+      "en": "Car detailing / cleaning",
+      "ar": "تنظيف وتفصيل السيارة"
+    },
+    "short": {
+      "en": "Interior and exterior cleaning.",
+      "ar": "تنظيف الداخل والخارج."
+    },
+    "body": {
+      "en": "Book interior cleaning, exterior cleaning, or both. PLACEHOLDER: list what each clean includes.",
+      "ar": "احجز تنظيف الداخل أو الخارج أو الاثنين. نص مؤقت: اذكر ما يشمله كل تنظيف."
+    },
+    "startingPrice": null,
+    "duration": {
+      "en": "",
+      "ar": ""
+    },
+    "image": "/services/detailing-and-cleaning.webp",
+    "featured": true
+  },
+  {
+    "id": "bumper-repair",
+    "slug": "bumper-repair",
+    "name": {
+      "en": "Bumper repair",
+      "ar": "إصلاح الصدام"
+    },
+    "short": {
+      "en": "Bumper cracks, scuffs, and repaint.",
+      "ar": "كسور الصدام والخدوش وإعادة الدهان."
+    },
+    "body": {
+      "en": "Send photos of the bumper. The shop confirms if it can be repaired or needs replacement. PLACEHOLDER: add the shop's rule for plastic repair.",
+      "ar": "أرسل صور الصدام. المحل يؤكد إن كان الإصلاح ممكناً أو يلزم تبديل. نص مؤقت: أضف قاعدة المحل لإصلاح البلاستيك."
+    },
+    "startingPrice": null,
+    "duration": {
+      "en": "",
+      "ar": ""
+    },
+    "image": "/services/bumper-repair.webp",
+    "featured": false
+  },
+  {
+    "id": "rims",
+    "slug": "rims-and-calipers",
+    "name": {
+      "en": "Rims and calipers painting",
+      "ar": "دهان الجنوط والكليبرات"
+    },
+    "short": {
+      "en": "Rims or brake calipers painted in a chosen colour.",
+      "ar": "دهان الجنوط أو كليبرات الفرامل بلون تحدده."
+    },
+    "body": {
+      "en": "Tell the shop how many rims, the size, and the colour. PLACEHOLDER: note whether tyres must be removed and who removes them.",
+      "ar": "أخبر المحل بعدد الجنوط والمقاس واللون. نص مؤقت: وضّح هل يلزم فك الإطارات ومن يفكها."
+    },
+    "startingPrice": null,
+    "duration": {
+      "en": "",
+      "ar": ""
+    },
+    "image": "/services/rims-and-calipers.webp",
+    "featured": false
+  }
+]

@@ -1,0 +1,184 @@
+[
+  {
+    "id": "clear-coats",
+    "slug": "clear-coats",
+    "name": {
+      "en": "Clear coats & hardeners",
+      "ar": "الكلير والمصلّبات"
+    },
+    "description": {
+      "en": "Clear coats and the hardeners mixed with them.",
+      "ar": "كلير كوت والمصلّبات التي تُخلط معه."
+    },
+    "featured": true,
+    "count": 39
+  },
+  {
+    "id": "primers",
+    "slug": "primers",
+    "name": {
+      "en": "Primers",
+      "ar": "البرايمر"
+    },
+    "description": {
+      "en": "Primers for bare metal, plastic, and repaired panels.",
+      "ar": "برايمر للمعدن العاري والبلاستيك والقطع بعد الإصلاح."
+    },
+    "featured": true,
+    "count": 13
+  },
+  {
+    "id": "body-fillers",
+    "slug": "body-fillers",
+    "name": {
+      "en": "Body fillers & putty",
+      "ar": "المعجون والحشو"
+    },
+    "description": {
+      "en": "Body filler and putty for dents and panel repair.",
+      "ar": "معجون وحشو للخدوش وإصلاح القطع."
+    },
+    "featured": true,
+    "count": 21
+  },
+  {
+    "id": "thinners",
+    "slug": "thinners",
+    "name": {
+      "en": "Thinners",
+      "ar": "الثنر"
+    },
+    "description": {
+      "en": "Thinners for mixing and gun cleaning.",
+      "ar": "ثنر للخلط وتنظيف مسدس الرش."
+    },
+    "featured": false,
+    "count": 18
+  },
+  {
+    "id": "spray-paints",
+    "slug": "spray-paints",
+    "name": {
+      "en": "Spray paints & aerosols",
+      "ar": "بخاخات الدهان"
+    },
+    "description": {
+      "en": "Aerosols and basecoat for colour work.",
+      "ar": "بخاخات وبيس كوت لأعمال اللون."
+    },
+    "featured": true,
+    "count": 27
+  },
+  {
+    "id": "abrasives",
+    "slug": "abrasives",
+    "name": {
+      "en": "Abrasives & sanding",
+      "ar": "السنفرة والورق"
+    },
+    "description": {
+      "en": "Sanding discs, sheets, and rolls.",
+      "ar": "أقراص ورق السنفرة والرولات."
+    },
+    "featured": true,
+    "count": 134
+  },
+  {
+    "id": "masking",
+    "slug": "masking",
+    "name": {
+      "en": "Masking tapes & paper",
+      "ar": "أشرطة وورق التقنيع"
+    },
+    "description": {
+      "en": "Masking tape and paper for spray work.",
+      "ar": "شريط وورق تقنيع لأعمال الرش."
+    },
+    "featured": false,
+    "count": 39
+  },
+  {
+    "id": "polishing",
+    "slug": "polishing",
+    "name": {
+      "en": "Polishing compounds & pads",
+      "ar": "معاجين التلميع والبادات"
+    },
+    "description": {
+      "en": "Compounds, polishes, and machine pads.",
+      "ar": "معاجين تلميع وبادات الماكينات."
+    },
+    "featured": true,
+    "count": 150
+  },
+  {
+    "id": "spray-guns",
+    "slug": "spray-guns",
+    "name": {
+      "en": "Spray guns & tools",
+      "ar": "مسدسات الرش والأدوات"
+    },
+    "description": {
+      "en": "Spray guns and refinish tools.",
+      "ar": "مسدسات الرش وأدوات السمكرة."
+    },
+    "featured": false,
+    "count": 79
+  },
+  {
+    "id": "ppe",
+    "slug": "ppe",
+    "name": {
+      "en": "PPE & safety",
+      "ar": "السلامة والحماية"
+    },
+    "description": {
+      "en": "Masks, gloves, and booth safety gear.",
+      "ar": "كمامات وقفازات ومستلزمات الحماية."
+    },
+    "featured": false,
+    "count": 0
+  },
+  {
+    "id": "car-care",
+    "slug": "car-care",
+    "name": {
+      "en": "Car care & detailing",
+      "ar": "العناية والتلميع"
+    },
+    "description": {
+      "en": "Compounds and products for washing and detailing.",
+      "ar": "منتجات الغسيل والتلميع والعناية."
+    },
+    "featured": false,
+    "count": 661
+  },
+  {
+    "id": "bed-liners",
+    "slug": "bed-liners",
+    "name": {
+      "en": "Bed liners",
+      "ar": "بطانات الحماية"
+    },
+    "description": {
+      "en": "Bed liner and textured coatings.",
+      "ar": "بطانة الحماية والطلاء المحبب."
+    },
+    "featured": true,
+    "count": 3
+  },
+  {
+    "id": "other",
+    "slug": "other",
+    "name": {
+      "en": "Other",
+      "ar": "أخرى"
+    },
+    "description": {
+      "en": "Items that do not sit in the other shelves yet.",
+      "ar": "منتجات لم تُوضع في رف آخر بعد."
+    },
+    "featured": false,
+    "count": 40
+  }
+]

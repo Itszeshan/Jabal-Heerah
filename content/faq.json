@@ -1,0 +1,74 @@
+[
+  {
+    "id": "colour-matching",
+    "question": {
+      "en": "Can you match my car's colour?",
+      "ar": "هل تطابقون لون سيارتي؟"
+    },
+    "answer": {
+      "en": "Yes. Colour matching is one of the shop's services. Bring the colour code or the car, or send photos on WhatsApp. PLACEHOLDER: the owner should explain how a code is read and how long a mix usually takes.",
+      "ar": "نعم. مطابقة اللون من خدمات المحل. أحضر كود اللون أو السيارة، أو أرسل الصور على واتساب. نص مؤقت: على صاحب المحل أن يشرح طريقة قراءة الكود والوقت المعتاد للخلط."
+    },
+    "placeholder": true
+  },
+  {
+    "id": "pickup",
+    "question": {
+      "en": "Can I pick up an order from the shop?",
+      "ar": "هل أستطيع استلام الطلب من المحل؟"
+    },
+    "answer": {
+      "en": "Yes. Pickup from the counter is the default. The shop is at 161 Sheikh Khalifa Bin Zayed St, G Floor, Industrial Area 4, Sharjah. Saturday to Thursday, 8 AM to 1 PM and 4 PM to 9 PM. Friday closed.",
+      "ar": "نعم. الاستلام من المحل هو الخيار الأساسي. العنوان: ١٦١ شارع الشيخ خليفة بن زايد، الطابق الأرضي، المنطقة الصناعية ٤، الشارقة. من السبت إلى الخميس، ٨ صباحاً إلى ١ ظهراً و٤ عصراً إلى ٩ مساءً. الجمعة مغلق."
+    },
+    "placeholder": false
+  },
+  {
+    "id": "delivery",
+    "question": {
+      "en": "Do you deliver?",
+      "ar": "هل يوجد توصيل؟"
+    },
+    "answer": {
+      "en": "You can ask for delivery at checkout. The shop confirms the address on WhatsApp. PLACEHOLDER: delivery areas and any fee are not set yet.",
+      "ar": "يمكنك طلب التوصيل عند إتمام الطلب. المحل يؤكد العنوان على واتساب. نص مؤقت: مناطق التوصيل وأي رسوم لم تُحدد بعد."
+    },
+    "placeholder": true
+  },
+  {
+    "id": "whatsapp-order",
+    "question": {
+      "en": "How do I order on WhatsApp?",
+      "ar": "كيف أطلب عن طريق واتساب؟"
+    },
+    "answer": {
+      "en": "Add products to the cart, open checkout, and enter your name and phone. The site opens WhatsApp with the order written out, including a reference number. Nothing is paid on the website. If WhatsApp does not open, use the resend button on the order page. The cart stays until you confirm you sent it.",
+      "ar": "أضف المنتجات إلى السلة، ثم أتمم الطلب واكتب اسمك ورقم هاتفك. يفتح الموقع واتساب وفي الرسالة الطلب جاهز مع رقم مرجعي. لا يتم الدفع عبر الموقع. إذا لم يفتح واتساب، استخدم زر إعادة الإرسال في صفحة الطلب. السلة تبقى إلى أن تؤكد أنك أرسلت الطلب."
+    },
+    "placeholder": false
+  },
+  {
+    "id": "payment",
+    "question": {
+      "en": "How do I pay?",
+      "ar": "كيف أدفع؟"
+    },
+    "answer": {
+      "en": "This website does not take payment. The shop confirms the order and how to pay when they reply on WhatsApp. PLACEHOLDER: list the payment methods the counter accepts.",
+      "ar": "هذا الموقع لا يستلم الدفع. المحل يؤكد الطلب وطريقة الدفع عندما يرد على واتساب. نص مؤقت: اذكر طرق الدفع التي يقبلها المحل."
+    },
+    "placeholder": true
+  },
+  {
+    "id": "prices",
+    "question": {
+      "en": "Are the prices on the website final?",
+      "ar": "هل أسعار الموقع نهائية؟"
+    },
+    "answer": {
+      "en": "The price on the product is the price sent to WhatsApp. A note on the cart says whether prices include 5% VAT. The shop confirms availability before you collect or pay. Payment is not taken on this website.",
+      "ar": "السعر المكتوب على المنتج هو الذي يُرسل في واتساب. ملاحظة في السلة توضّح إن كانت الأسعار تشمل ضريبة ٥٪ أو لا. المحل يؤكد التوفر قبل الاستلام أو الدفع. الدفع لا يتم عبر هذا الموقع."
+    },
+    "placeholder": false
+  }
+]

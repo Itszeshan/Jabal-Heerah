@@ -1,0 +1,14 @@
+{
+  "title": {
+    "en": "About the shop",
+    "ar": "عن المحل"
+  },
+  "body": {
+    "en": "PLACEHOLDER. Write who runs the counter, what customers can walk in for, and how colour matching works. Do not add years in business, review scores, or certifications unless they are real and you can show them.\n\nJabal Al Heerah Auto Paints is a walk-in auto paint and refinish supply shop at 161 Sheikh Khalifa Bin Zayed St, G Floor, Industrial Area 4, Sharjah.",
+    "ar": "نص مؤقت. اكتب من يدير المحل، وما الذي يحضر الزبون لشرائه، وكيف تتم مطابقة اللون. لا تضف سنوات خبرة أو تقييمات أو شهادات إلا إذا كانت حقيقية ويمكن إثباتها.\n\nدهانات جبل الحيرة للسيارات محل دهان ومستلزمات سمكرة، الزيارة مباشرة إلى المحل: ١٦١ شارع الشيخ خليفة بن زايد، الطابق الأرضي، المنطقة الصناعية ٤، الشارقة."
+  },
+  "photos": [
+    "/about/counter.webp",
+    "/about/shelves.webp"
+  ]
+}
