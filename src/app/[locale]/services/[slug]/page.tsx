@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { PendingImage } from "@/components/pending-image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/json-ld";
@@ -64,7 +64,7 @@ export default async function ServicePage({
         </div>
         <div className="relative aspect-[4/3] overflow-hidden border border-line bg-well">
           {service.image ? (
-            <Image src={service.image} alt={text(service.name, loc)} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" priority />
+            <PendingImage src={service.image} alt={text(service.name, loc)} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" priority />
           ) : null}
         </div>
       </div>

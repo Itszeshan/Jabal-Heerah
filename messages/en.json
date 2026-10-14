@@ -28,7 +28,8 @@
     "closeMenu": "Close menu",
     "breadcrumb": "Breadcrumb",
     "home": "Home",
-    "all": "All"
+    "all": "All",
+    "loading": "Loading"
   },
   "nav": {
     "shop": "Shop",

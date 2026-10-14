@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { PendingImage } from "./pending-image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { site } from "../../config/site";
@@ -304,7 +304,7 @@ export function ShopBrowser({
                     <Link href={`/product/${item.slug}`} className="block border-b border-line">
                       {item.image.startsWith("/") ? (
                         <div className="photo-well relative aspect-square">
-                          <Image src={item.image} alt={name} fill sizes="(min-width: 1280px) 22vw, 50vw" className="object-contain p-3" />
+                          <PendingImage src={item.image} alt={name} fill sizes="(min-width: 1280px) 22vw, 50vw" className="object-contain p-3" />
                         </div>
                       ) : (
                         <div className="flex aspect-square flex-col justify-between bg-[#e6e9ed] p-3">

@@ -103,6 +103,90 @@ html[dir="rtl"] .carousel-progress {
   transform-origin: right;
 }
 
+.paint-wave {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  height: 36px;
+}
+
+.paint-wave span {
+  width: 10px;
+  height: 10px;
+  background: #c44912;
+  animation: paint-wave 0.9s ease-in-out infinite;
+}
+
+.paint-wave span:nth-child(2) {
+  animation-delay: 0.1s;
+  background: #d35a1c;
+}
+
+.paint-wave span:nth-child(3) {
+  animation-delay: 0.2s;
+  background: #e07a32;
+}
+
+.paint-wave span:nth-child(4) {
+  animation-delay: 0.3s;
+  background: #d35a1c;
+}
+
+.paint-wave span:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.pending-photo {
+  opacity: 0;
+}
+
+.pending-photo.is-ready {
+  opacity: 1;
+}
+
+.nav-progress {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 90;
+  height: 3px;
+  background: #c44912;
+  transform-origin: left;
+  animation: nav-progress 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+html[dir="rtl"] .nav-progress {
+  transform-origin: right;
+}
+
+@keyframes paint-wave {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  40% {
+    transform: translateY(-14px);
+    opacity: 1;
+  }
+}
+
+@keyframes nav-progress {
+  from {
+    transform: scaleX(0.08);
+  }
+  to {
+    transform: scaleX(0.86);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pending-photo {
+    transition: opacity 400ms ease;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -110,6 +194,20 @@ html[dir="rtl"] .carousel-progress {
 
   .carousel-progress {
     animation: none;
+    transform: none;
+  }
+
+  .paint-wave span,
+  .nav-progress {
+    animation: none;
+  }
+
+  .paint-wave span {
+    opacity: 1;
+    transform: none;
+  }
+
+  .nav-progress {
     transform: none;
   }
 }

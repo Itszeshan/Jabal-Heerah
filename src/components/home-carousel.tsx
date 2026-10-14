@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { PendingImage } from "./pending-image";
 import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
@@ -104,7 +104,7 @@ export function HomeCarousel({
               >
                 <div className={`relative min-h-64 lg:col-start-2 lg:row-start-1 lg:min-h-[24rem] ${item.image ? "photo-well" : "bg-charcoal"}`}>
                   {item.image ? (
-                    <Image
+                    <PendingImage
                       src={item.image}
                       alt=""
                       fill

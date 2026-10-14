@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { PendingImage } from "@/components/pending-image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Container } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
@@ -37,7 +37,7 @@ export default async function BrandsPage({ params }: { params: Promise<{ locale:
             <li key={brand.id} className="shelf-card flex flex-col">
               <Link href={`/shop?brand=${brand.slug}`} className="photo-well relative block aspect-[4/3] border-b border-line">
                 {image ? (
-                  <Image src={image} alt={brand.name} fill sizes="(min-width: 1024px) 30vw, 50vw" className="object-contain p-4" />
+                  <PendingImage src={image} alt={brand.name} fill sizes="(min-width: 1024px) 30vw, 50vw" className="object-contain p-4" />
                 ) : (
                   <span className="flex h-full items-end p-4 text-2xl font-semibold">{brand.name}</span>
                 )}

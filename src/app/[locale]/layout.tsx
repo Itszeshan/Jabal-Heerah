@@ -9,6 +9,7 @@ import { Analytics } from "@/components/analytics";
 import { CookieNotice } from "@/components/cookie-notice";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { SiteLoader } from "@/components/site-loader";
 import { UtmCapture } from "@/components/utm-capture";
 import { WhatsAppFab } from "@/components/whatsapp-fab";
 import { routing } from "@/i18n/routing";
@@ -84,6 +85,9 @@ export default async function LocaleLayout({
           >
             {t("skip")}
           </a>
+          <Suspense fallback={null}>
+            <SiteLoader />
+          </Suspense>
           <Header />
           <CookieNotice />
           <main id="main">{children}</main>

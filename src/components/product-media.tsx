@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { PendingImage } from "./pending-image";
 import { PhotoSlot } from "./photo-slot";
 
 export async function ProductMedia({
@@ -16,7 +16,7 @@ export async function ProductMedia({
 
   return (
     <div className="photo-well relative aspect-square">
-      <Image src={src} alt={alt} fill priority={priority} sizes={sizes} className="object-contain p-4" />
+      <PendingImage src={src} alt={alt} fill priority={priority} sizes={sizes} className="object-contain p-4" />
     </div>
   );
 }

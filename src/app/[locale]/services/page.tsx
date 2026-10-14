@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { PendingImage } from "@/components/pending-image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ServiceIcon } from "@/components/service-icon";
 import { Container } from "@/components/ui";
@@ -54,7 +54,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
           >
             <span className="relative block aspect-[4/3] overflow-hidden bg-well">
               {service.image ? (
-                <Image
+                <PendingImage
                   src={service.image}
                   alt=""
                   fill

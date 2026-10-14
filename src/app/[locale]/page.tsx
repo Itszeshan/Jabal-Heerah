@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { PendingImage } from "@/components/pending-image";
 import { Clock, MapPin, Phone, Storefront, Wrench } from "@phosphor-icons/react/ssr";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { site } from "../../../config/site";
 import { HomeCarousel, type HomeSlide } from "@/components/home-carousel";
 import { ServiceMark } from "@/components/service-icon";
+import { ShelfExplorer } from "@/components/shelf-explorer";
 import { JsonLd } from "@/components/json-ld";
 import { MapEmbed, mapLink } from "@/components/map-embed";
 import { ProductCard } from "@/components/product-card";
@@ -13,10 +15,10 @@ import { Link } from "@/i18n/navigation";
 import {
   brandImage,
   brandName,
-  categoryImage,
   getBrands,
   getCategories,
   getProducts,
+  getService,
   getServices,
   hasExampleProducts,
   minPrice,
@@ -54,6 +56,22 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const servicesT = await getTranslations("services");
   const contact = await getTranslations("contact");
   const categories = getCategories().filter((category) => category.featured && (category.count ?? 1) > 0);
+  const shelves = categories
+    .map((category) => ({
+      id: category.id,
+      name: text(category.name, loc),
+      href: `/shop/${category.slug}`,
+      products: getProducts()
+        .filter((product) => product.category === category.slug && product.images.some((image) => image.startsWith("/")))
+        .slice(0, 6)
+        .map((product) => ({
+          href: `/product/${product.slug}`,
+          name: text(product.name, loc),
+          image: product.images.find((image) => image.startsWith("/")) ?? "",
+        })),
+    }))
+    .filter((shelf) => shelf.products.length > 0);
+  const colour = getService("colour-matching");
   const products = getProducts().filter((product) => product.featured).slice(0, 4);
   const services = getServices().filter((service) => service.featured);
   const brands = [...getBrands()].sort((a, b) => (b.count ?? 0) - (a.count ?? 0)).slice(0, 8);
@@ -122,33 +140,30 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       <JsonLd data={localBusinessJsonLd(loc)} />
-      <section className="bg-charcoal text-white">
-        <Container className="grid items-center gap-10 py-10 md:py-14 lg:grid-cols-[minmax(0,1.2fr)_22rem] lg:py-16">
-          <div>
-            <h1 className="max-w-3xl text-4xl font-semibold leading-[1.08] tracking-tight md:text-5xl">
-              {site.name[loc]}
-            </h1>
-            <p className="mt-4 max-w-md text-base leading-relaxed text-white/80">{t("sub")}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/shop" className={buttonClass("primary")}>
-                <Storefront size={18} weight="regular" aria-hidden />
-                {t("shopCta")}
-              </Link>
-              <Link href="/services" className={buttonClass("inverse")}>
-                <Wrench size={18} weight="regular" aria-hidden />
-                {t("serviceCta")}
-              </Link>
-            </div>
-          </div>
-          <div className="relative aspect-[4/3] w-full overflow-hidden border border-white/15">
-            <Image
-              src="/about/counter.webp"
-              alt=""
-              fill
-              priority
-              sizes="(min-width: 1024px) 20rem, 100vw"
-              className="object-cover"
-            />
+      <section className="relative isolate min-h-[calc(100dvh-6rem)] overflow-hidden bg-charcoal text-white">
+        <Image
+          src="/services/full-body-painting.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[72%_center]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal via-charcoal/85 to-charcoal/20 rtl:bg-gradient-to-l" />
+        <Container className="relative flex min-h-[calc(100dvh-6rem)] flex-col justify-center py-10 md:py-14">
+          <h1 className="max-w-xl text-4xl font-semibold leading-[1.08] tracking-tight md:text-5xl">
+            {site.name[loc]}
+          </h1>
+          <p className="mt-4 max-w-md text-base leading-relaxed text-white/85">{t("sub")}</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link href="/shop" className={buttonClass("primary")}>
+              <Storefront size={18} weight="regular" aria-hidden />
+              {t("shopCta")}
+            </Link>
+            <Link href="/services" className={buttonClass("inverse")}>
+              <Wrench size={18} weight="regular" aria-hidden />
+              {t("serviceCta")}
+            </Link>
           </div>
         </Container>
       </section>
@@ -182,23 +197,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section className="pb-12 md:pb-16">
         <Container>
           <h2 className="text-3xl font-semibold tracking-tight">{t("categoriesTitle")}</h2>
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {categories.map((category) => {
-              const image = categoryImage(category.slug);
-              return (
-                <Link key={category.id} href={`/shop/${category.slug}`} className="shelf-card block">
-                  <span className="photo-well relative block aspect-[4/3] border-b border-line">
-                    {image ? (
-                      <Image src={image} alt="" fill sizes="(min-width: 1024px) 20vw, 50vw" className="object-contain p-3" />
-                    ) : null}
-                  </span>
-                  <span className="flex flex-col p-3">
-                    <span className="font-semibold leading-snug">{text(category.name, loc)}</span>
-                    {category.count != null ? <span className="mt-1 text-xs tabular-nums text-muted">{common("results", { count: category.count })}</span> : null}
-                  </span>
-                </Link>
-              );
-            })}
+          <div className="mt-6">
+            <ShelfExplorer shelves={shelves} openLabel={t("openShelf")} />
           </div>
         </Container>
       </section>
@@ -218,6 +218,20 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               ))}
             </div>
           </Container>
+        </section>
+      ) : null}
+
+      {colour?.image ? (
+        <section className="bg-white">
+          <Link href={`/services/${colour.slug}`} className="grid lg:grid-cols-2">
+            <span className="relative block min-h-72 bg-well">
+              <PendingImage src={colour.image} alt="" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+            </span>
+            <span className="flex flex-col justify-center px-4 py-12 md:px-12">
+              <h2 className="max-w-md text-3xl font-semibold tracking-tight md:text-4xl">{text(colour.name, loc)}</h2>
+              <p className="mt-3 max-w-md text-base leading-relaxed text-muted">{text(colour.short, loc)}</p>
+            </span>
+          </Link>
         </section>
       ) : null}
 
@@ -262,7 +276,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <Link href={`/shop?brand=${brand.slug}`} className="shelf-card block">
                   <span className="photo-well relative block aspect-[4/3] border-b border-line">
                     {image ? (
-                      <Image src={image} alt="" fill sizes="(min-width: 1024px) 20vw, 50vw" className="object-contain p-3" />
+                      <PendingImage src={image} alt="" fill sizes="(min-width: 1024px) 20vw, 50vw" className="object-contain p-3" />
                     ) : null}
                   </span>
                   <span className="flex flex-col items-center px-3 py-3 text-center">
