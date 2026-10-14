@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/json-ld";
-import { ProductMedia } from "@/components/product-media";
+import { ServiceMark } from "@/components/service-icon";
 import { ServiceBooking } from "@/components/service-booking";
 import { Container } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
@@ -51,16 +52,21 @@ export default async function ServicePage({
         <span aria-hidden> / </span>
         <Link href="/services" className="hover:text-ink">{nav("services")}</Link>
       </nav>
-      <div className="grid gap-8 lg:grid-cols-2">
+      <div className="grid items-start gap-8 lg:grid-cols-2">
         <div>
-          <h1 className="text-4xl font-semibold tracking-tight">{text(service.name, loc)}</h1>
-          <p className="mt-4 max-w-prose text-sm leading-7">{text(service.body, loc)}</p>
+          <ServiceMark id={service.id} />
+          <h1 className="mt-4 text-4xl font-semibold tracking-tight">{text(service.name, loc)}</h1>
+          <p className="mt-4 max-w-prose text-base leading-7">{text(service.body, loc)}</p>
           {service.startingPrice != null ? (
             <p className="mt-4 text-sm font-semibold">{t("startingFrom", { price: formatAed(service.startingPrice, loc) })}</p>
           ) : null}
           {text(service.duration, loc) ? <p className="mt-2 text-sm">{text(service.duration, loc)}</p> : null}
         </div>
-        <ProductMedia src={service.image} alt={text(service.name, loc)} />
+        <div className="relative aspect-[4/3] overflow-hidden border border-line bg-well">
+          {service.image ? (
+            <Image src={service.image} alt={text(service.name, loc)} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" priority />
+          ) : null}
+        </div>
       </div>
       <div className="mt-8 max-w-3xl">
         <ServiceBooking service={service} />

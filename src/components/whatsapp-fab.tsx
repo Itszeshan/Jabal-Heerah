@@ -24,7 +24,7 @@ export function WhatsAppFab() {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-20 end-4 z-40 inline-flex min-h-12 items-center gap-2 bg-orange px-4 text-sm font-semibold text-white active:scale-[0.98] lg:bottom-6"
+      className="fixed bottom-20 end-4 z-40 inline-flex min-h-12 items-center gap-2 bg-orange px-4 text-sm font-semibold text-white motion-safe:transition-transform motion-safe:active:scale-[0.98] lg:bottom-6"
       onClick={() => track("generate_lead", { content_name: "floating_whatsapp" })}
     >
       <WhatsappLogo size={20} weight="regular" aria-hidden />

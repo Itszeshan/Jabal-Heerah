@@ -1,22 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import {
-  Clock,
-  Drop,
-  Hammer,
-  MapPin,
-  PaintBrush,
-  PaintBucket,
-  Palette,
-  Phone,
-  Sparkle,
-  Stack,
-  Storefront,
-  Wrench,
-} from "@phosphor-icons/react/ssr";
+import { Clock, MapPin, Phone, Storefront, Wrench } from "@phosphor-icons/react/ssr";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { site } from "../../../config/site";
 import { HomeCarousel, type HomeSlide } from "@/components/home-carousel";
+import { ServiceMark } from "@/components/service-icon";
 import { JsonLd } from "@/components/json-ld";
 import { MapEmbed, mapLink } from "@/components/map-embed";
 import { ProductCard } from "@/components/product-card";
@@ -25,6 +13,7 @@ import { Link } from "@/i18n/navigation";
 import {
   brandImage,
   brandName,
+  categoryImage,
   getBrands,
   getCategories,
   getProducts,
@@ -40,29 +29,7 @@ import { localBusinessJsonLd } from "@/lib/schema";
 import { waUrl } from "@/lib/whatsapp";
 import type { Locale } from "@/types/content";
 
-const board = ["#f4f5f6", "#c5c9cf", "#5c6b73", "#1b1e22", "#c44912", "#6e322c"];
-const shelfTone = ["#1b1e22", "#c44912", "#5c6b73", "#9a3412"];
 const activityIds = ["colour-matching", "denting", "polishing"] as const;
-const serviceIcons = {
-  denting: Hammer,
-  "full-painting": PaintBucket,
-  "panel-painting": PaintBrush,
-  "scratch-repair": PaintBrush,
-  "colour-matching": Palette,
-  polishing: Sparkle,
-  detailing: Drop,
-  "bumper-repair": Wrench,
-  rims: Stack,
-} as const;
-
-function ServiceMark({ id }: { id: string }) {
-  const Icon = serviceIcons[id as keyof typeof serviceIcons] ?? Wrench;
-  return (
-    <span className="flex size-10 items-center justify-center border border-line bg-well text-ink" aria-hidden>
-      <Icon size={20} weight="regular" />
-    </span>
-  );
-}
 
 export async function generateMetadata({
   params,
@@ -156,7 +123,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <>
       <JsonLd data={localBusinessJsonLd(loc)} />
       <section className="bg-charcoal text-white">
-        <Container className="grid items-end gap-10 py-10 md:py-14 lg:grid-cols-[minmax(0,1.2fr)_20rem] lg:py-16">
+        <Container className="grid items-center gap-10 py-10 md:py-14 lg:grid-cols-[minmax(0,1.2fr)_22rem] lg:py-16">
           <div>
             <h1 className="max-w-3xl text-4xl font-semibold leading-[1.08] tracking-tight md:text-5xl">
               {site.name[loc]}
@@ -173,10 +140,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </Link>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-2 border border-white/15 p-2" aria-hidden>
-            {board.map((color) => (
-              <div key={color} className="aspect-[3/4]" style={{ backgroundColor: color }} />
-            ))}
+          <div className="relative aspect-[4/3] w-full overflow-hidden border border-white/15">
+            <Image
+              src="/about/counter.webp"
+              alt=""
+              fill
+              priority
+              sizes="(min-width: 1024px) 20rem, 100vw"
+              className="object-cover"
+            />
           </div>
         </Container>
       </section>
@@ -211,17 +183,22 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <Container>
           <h2 className="text-3xl font-semibold tracking-tight">{t("categoriesTitle")}</h2>
           <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {categories.map((category, index) => (
-              <Link
-                key={category.id}
-                href={`/shop/${category.slug}`}
-                className="shelf-card flex min-h-28 flex-col justify-end p-4"
-                style={{ borderTop: `3px solid ${shelfTone[index % shelfTone.length]}` }}
-              >
-                <span className="font-semibold leading-snug">{text(category.name, loc)}</span>
-                {category.count != null ? <span className="mt-1 text-xs tabular-nums text-muted">{common("results", { count: category.count })}</span> : null}
-              </Link>
-            ))}
+            {categories.map((category) => {
+              const image = categoryImage(category.slug);
+              return (
+                <Link key={category.id} href={`/shop/${category.slug}`} className="shelf-card block">
+                  <span className="photo-well relative block aspect-[4/3] border-b border-line">
+                    {image ? (
+                      <Image src={image} alt="" fill sizes="(min-width: 1024px) 20vw, 50vw" className="object-contain p-3" />
+                    ) : null}
+                  </span>
+                  <span className="flex flex-col p-3">
+                    <span className="font-semibold leading-snug">{text(category.name, loc)}</span>
+                    {category.count != null ? <span className="mt-1 text-xs tabular-nums text-muted">{common("results", { count: category.count })}</span> : null}
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </Container>
       </section>

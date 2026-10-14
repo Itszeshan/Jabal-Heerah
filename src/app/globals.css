@@ -54,12 +54,34 @@ button {
 }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .shelf-card {
-    transition: border-color 180ms ease;
+  .shelf-card,
+  .service-card {
+    transition: border-color 200ms ease, transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .shelf-card:hover {
-    border-color: #9aa3ad;
+  .shelf-card:hover,
+  .service-card:hover {
+    border-color: #1b1e22;
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  main section {
+    animation: rise-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 28%;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 

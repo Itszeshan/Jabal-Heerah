@@ -1,6 +1,7 @@
 "use client";
 
 import { List, MagnifyingGlass, ShoppingCart, X } from "@phosphor-icons/react";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -50,7 +51,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-white/10 bg-charcoal text-white">
-      <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4">
+      <div className="mx-auto flex h-24 max-w-7xl items-center gap-4 px-4">
         <button
           type="button"
           className="inline-flex size-11 items-center justify-center lg:hidden"
@@ -62,12 +63,7 @@ export function Header() {
           <span className="sr-only">{open ? common("closeMenu") : common("openMenu")}</span>
         </button>
         <Link href="/" className="flex min-w-0 items-center gap-2" onClick={() => setOpen(false)}>
-          <span className="grid shrink-0 grid-cols-2 gap-0.5" aria-hidden>
-            <span className="size-2.5 bg-orange" />
-            <span className="size-2.5 bg-white" />
-            <span className="size-2.5 bg-[#5c6b73]" />
-            <span className="size-2.5 bg-ink" />
-          </span>
+          <Image src="/jabal-badge-512.png" alt="" width={512} height={512} className="size-20 shrink-0" priority />
           <span className="truncate text-sm font-semibold leading-tight">{name}</span>
         </Link>
 
