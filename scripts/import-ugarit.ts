@@ -485,6 +485,14 @@ function main() {
       description: { en: "", ar: "" },
       count: info.count,
     }));
+  for (const row of readCsv(resolve(ROOT, "data/brands-extra.csv"))) {
+    const name = (row.name || "").trim();
+    if (!name) continue;
+    const slug = (row.slug || "").trim() || brandSlugFor(name);
+    if (brands.some((brand) => brand.slug === slug)) continue;
+    brands.push({ id: slug, slug, name, description: { en: "", ar: "" }, count: 0 });
+  }
+  brands.sort((a, b) => a.name.localeCompare(b.name));
 
   const index = products.filter((product) => !product.hidden).map((product) => ({
     slug: product.slug,

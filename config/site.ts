@@ -7,8 +7,8 @@ export const site = {
     en: "Jabal Al Heerah Auto Paints",
     ar: "دهانات جبل الحيرة للسيارات",
   },
-  domain: "jabalalheerah.ae",
-  url: "https://jabalalheerah.ae",
+  domain: "jabalheerah.ae",
+  url: "https://jabalheerah.ae",
   phoneDisplay: "+971 52 853 3654",
   phoneTel: "+971528533654",
   /** Digits only, no plus. Used for https://wa.me/ */
@@ -28,10 +28,10 @@ export const site = {
   mapPinUrl: "",
   mapQuery: "161 Sheikh Khalifa Bin Zayed St, Industrial Area 4, Sharjah, UAE",
   /**
-   * Optional exact coordinates from the Google Maps pin.
-   * Leave null until the owner confirms them. Do not guess.
+   * Exact coordinates of the shop pin (Google Maps listing, matches 2GIS).
+   * The map uses these first, because the street name also exists in Ajman.
    */
-  geo: null as { latitude: number; longitude: number } | null,
+  geo: { latitude: 25.335618, longitude: 55.409276 } as { latitude: number; longitude: number } | null,
   hours: {
     /** Taken from the Google Maps listing for this shop. */
     placeholder: false,

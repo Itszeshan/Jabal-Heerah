@@ -1,11 +1,11 @@
 # Catalog import
 
-Date: 2026-10-13
+Date: 2026-10-27
 
 - Source rows: 1285
 - Products written: 1224
-- Visible in the shop: 1224
-- Hidden: 0
+- Visible in the shop: 848
+- Hidden: 376
 - Variant groups: 32
 - Skipped (price was zero or below): 2
 - New items: 0
@@ -19,19 +19,19 @@ None. Every source category is in data/category-map.json.
 
 ## Category counts
 
-- Clear coats & hardeners: 39
-- Primers: 13
-- Body fillers & putty: 21
-- Thinners: 18
-- Spray paints & aerosols: 27
-- Abrasives & sanding: 134
-- Masking tapes & paper: 39
-- Polishing compounds & pads: 150
-- Spray guns & tools: 79
+- Clear coats & hardeners: 25
+- Primers: 5
+- Body fillers & putty: 9
+- Thinners: 9
+- Spray paints & aerosols: 14
+- Abrasives & sanding: 39
+- Masking tapes & paper: 25
+- Polishing compounds & pads: 143
+- Spray guns & tools: 51
 - PPE & safety: 0
-- Car care & detailing: 661
-- Bed liners: 3
-- Other: 40
+- Car care & detailing: 499
+- Bed liners: 1
+- Other: 28
 
 ## Prices changed
 

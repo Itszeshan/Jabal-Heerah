@@ -33,22 +33,34 @@ export default async function BrandsPage({ params }: { params: Promise<{ locale:
       <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {brands.map((brand) => {
           const image = brandImage(brand.slug);
+          const comingSoon = brand.count === 0;
+          const media = image ? (
+            <PendingImage src={image} alt={brand.name} fill sizes="(min-width: 1024px) 30vw, 50vw" className="object-contain p-4" />
+          ) : (
+            <span className="flex h-full items-end p-4 text-2xl font-semibold">{brand.name}</span>
+          );
           return (
             <li key={brand.id} className="shelf-card flex flex-col">
-              <Link href={`/shop?brand=${brand.slug}`} className="photo-well relative block aspect-[4/3] border-b border-line">
-                {image ? (
-                  <PendingImage src={image} alt={brand.name} fill sizes="(min-width: 1024px) 30vw, 50vw" className="object-contain p-4" />
-                ) : (
-                  <span className="flex h-full items-end p-4 text-2xl font-semibold">{brand.name}</span>
-                )}
-              </Link>
+              {comingSoon ? (
+                <div className="photo-well relative block aspect-[4/3] border-b border-line">{media}</div>
+              ) : (
+                <Link href={`/shop?brand=${brand.slug}`} className="photo-well relative block aspect-[4/3] border-b border-line">
+                  {media}
+                </Link>
+              )}
               <div className="flex flex-1 flex-col p-4">
                 <h2 className="text-2xl font-semibold">{brand.name}</h2>
                 {text(brand.description, loc) ? <p className="mt-2 text-sm leading-6 text-muted">{text(brand.description, loc)}</p> : null}
-                {brand.count != null ? <p className="mt-2 text-sm tabular-nums text-muted">{common("results", { count: brand.count })}</p> : null}
-                <Link href={`/shop?brand=${brand.slug}`} className="mt-auto inline-flex min-h-11 items-center pt-3 text-sm font-semibold text-orange-ink">
-                  {t("shopBrand", { brand: brand.name })}
-                </Link>
+                {comingSoon ? (
+                  <p className="mt-2 text-sm text-muted">{t("comingSoon")}</p>
+                ) : (
+                  <>
+                    {brand.count != null ? <p className="mt-2 text-sm tabular-nums text-muted">{common("results", { count: brand.count })}</p> : null}
+                    <Link href={`/shop?brand=${brand.slug}`} className="mt-auto inline-flex min-h-11 items-center pt-3 text-sm font-semibold text-orange-ink">
+                      {t("shopBrand", { brand: brand.name })}
+                    </Link>
+                  </>
+                )}
               </div>
             </li>
           );

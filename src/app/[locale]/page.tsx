@@ -188,7 +188,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               fresh: t("newLabel"),
               previous: t("previous"),
               next: t("next"),
-              position: t("slidePosition"),
+              position: t.raw("slidePosition") as string,
             }}
           />
         </Container>

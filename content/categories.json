@@ -11,7 +11,7 @@
       "ar": "كلير كوت والمصلّبات التي تُخلط معه."
     },
     "featured": true,
-    "count": 39
+    "count": 25
   },
   {
     "id": "primers",
@@ -25,7 +25,7 @@
       "ar": "برايمر للمعدن العاري والبلاستيك والقطع بعد الإصلاح."
     },
     "featured": true,
-    "count": 13
+    "count": 5
   },
   {
     "id": "body-fillers",
@@ -39,7 +39,7 @@
       "ar": "معجون وحشو للخدوش وإصلاح القطع."
     },
     "featured": true,
-    "count": 21
+    "count": 9
   },
   {
     "id": "thinners",
@@ -53,7 +53,7 @@
       "ar": "ثنر للخلط وتنظيف مسدس الرش."
     },
     "featured": false,
-    "count": 18
+    "count": 9
   },
   {
     "id": "spray-paints",
@@ -67,7 +67,7 @@
       "ar": "بخاخات وبيس كوت لأعمال اللون."
     },
     "featured": true,
-    "count": 27
+    "count": 14
   },
   {
     "id": "abrasives",
@@ -81,7 +81,7 @@
       "ar": "أقراص ورق السنفرة والرولات."
     },
     "featured": true,
-    "count": 134
+    "count": 39
   },
   {
     "id": "masking",
@@ -95,7 +95,7 @@
       "ar": "شريط وورق تقنيع لأعمال الرش."
     },
     "featured": false,
-    "count": 39
+    "count": 25
   },
   {
     "id": "polishing",
@@ -109,7 +109,7 @@
       "ar": "معاجين تلميع وبادات الماكينات."
     },
     "featured": true,
-    "count": 150
+    "count": 143
   },
   {
     "id": "spray-guns",
@@ -123,7 +123,7 @@
       "ar": "مسدسات الرش وأدوات السمكرة."
     },
     "featured": false,
-    "count": 79
+    "count": 51
   },
   {
     "id": "ppe",
@@ -151,7 +151,7 @@
       "ar": "منتجات الغسيل والتلميع والعناية."
     },
     "featured": false,
-    "count": 661
+    "count": 499
   },
   {
     "id": "bed-liners",
@@ -165,7 +165,7 @@
       "ar": "بطانة الحماية والطلاء المحبب."
     },
     "featured": true,
-    "count": 3
+    "count": 1
   },
   {
     "id": "other",
@@ -179,6 +179,6 @@
       "ar": "منتجات لم تُوضع في رف آخر بعد."
     },
     "featured": false,
-    "count": 40
+    "count": 28
   }
 ]

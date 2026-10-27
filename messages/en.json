@@ -203,6 +203,7 @@
     "title": "Brands",
     "intro": "Brands in the shop. Open one to see its products.",
     "shopBrand": "Shop {brand}",
+    "comingSoon": "Products coming soon. Ask on WhatsApp.",
     "placeholder": "Brand note is a placeholder."
   },
   "about": {

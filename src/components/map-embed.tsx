@@ -1,14 +1,18 @@
 import { site } from "../../config/site";
 
+function mapTarget() {
+  return site.geo ? `${site.geo.latitude},${site.geo.longitude}` : site.mapQuery;
+}
+
 function embedSrc() {
   if (site.mapPinUrl.includes("output=embed")) return site.mapPinUrl;
-  return `https://maps.google.com/maps?q=${encodeURIComponent(site.mapPinUrl || site.mapQuery)}&z=16&output=embed`;
+  return `https://maps.google.com/maps?q=${encodeURIComponent(mapTarget())}&z=17&output=embed`;
 }
 
 export function mapLink() {
   return (
     site.mapPinUrl ||
-    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapQuery)}`
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapTarget())}`
   );
 }
 

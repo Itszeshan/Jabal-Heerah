@@ -97,7 +97,7 @@ The site is a Next.js app. It does not need a separate database for this version
 1. Push the project to GitHub.
 2. Import it at https://vercel.com/new.
 3. Add the same `NEXT_PUBLIC_` values from `.env.example` if you have them.
-4. Deploy. Point `jabalalheerah.ae` at the Vercel project.
+4. Deploy. Point `jabalheerah.ae` at the Vercel project.
 
 ### Netlify
 
@@ -138,6 +138,7 @@ What you can edit without code:
 - `data/featured.csv` — offer ids to show on the home page.
 - `data/in-stock.csv` — offer ids you know are in the shop. Everything else says "Ask for availability".
 - `data/image-blocklist.csv` — offer ids whose downloaded photo should not be used.
+- `data/brands-extra.csv` — brands to list on the Brands page before they have products (`slug,name`). A brand with no products says "Products coming soon".
 - `data/category-map.json` — which shelf a source category belongs on.
 - `public/products/custom/` — drop a photo named with the product link slug, for example `the-product-name.webp`. That photo is the one the site uses.
 
