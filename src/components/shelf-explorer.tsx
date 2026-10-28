@@ -18,7 +18,7 @@ export function ShelfExplorer({ shelves, openLabel }: { shelves: ShelfPreview[];
 
   return (
     <div className="grid items-start gap-8 lg:grid-cols-[15rem_minmax(0,1fr)]">
-      <div>
+      <div className="min-w-0">
         <div className="flex gap-2 overflow-x-auto lg:flex-col lg:overflow-visible" role="tablist">
           {shelves.map((item, index) => {
             const selected = index === active;

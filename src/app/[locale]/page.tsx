@@ -11,6 +11,9 @@ import { JsonLd } from "@/components/json-ld";
 import { MapEmbed, mapLink } from "@/components/map-embed";
 import { ProductCard } from "@/components/product-card";
 import { buttonClass, Container } from "@/components/ui";
+import { VisionToggle } from "@/components/vision-toggle";
+import { HeroCar } from "@/components/hero-car";
+import { HeroTitle } from "@/components/hero-title";
 import { Link } from "@/i18n/navigation";
 import {
   brandImage,
@@ -142,28 +145,46 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <JsonLd data={localBusinessJsonLd(loc)} />
       <section className="relative isolate min-h-[calc(100dvh-6rem)] overflow-hidden bg-charcoal text-white">
         <Image
-          src="/services/full-body-painting.webp"
+          src="/home/hero-stage.webp"
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[72%_center]"
+          className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal via-charcoal/85 to-charcoal/20 rtl:bg-gradient-to-l" />
-        <Container className="relative flex min-h-[calc(100dvh-6rem)] flex-col justify-center py-10 md:py-14">
-          <h1 className="max-w-xl text-4xl font-semibold leading-[1.08] tracking-tight md:text-5xl">
-            {site.name[loc]}
-          </h1>
-          <p className="mt-4 max-w-md text-base leading-relaxed text-white/85">{t("sub")}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/shop" className={buttonClass("primary")}>
-              <Storefront size={18} weight="regular" aria-hidden />
-              {t("shopCta")}
-            </Link>
-            <Link href="/services" className={buttonClass("inverse")}>
-              <Wrench size={18} weight="regular" aria-hidden />
-              {t("serviceCta")}
-            </Link>
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/70 via-charcoal/30 to-transparent rtl:bg-gradient-to-l" />
+        <Container className="relative grid min-h-[calc(100dvh-6rem)] content-between gap-10 pt-6 pb-10 md:py-14 lg:content-start lg:pt-8">
+          {/* z-10 so the opened vision panel covers the buttons below it on lg. */}
+          <div className="relative z-10 lg:w-1/2 lg:pe-6">
+            <HeroTitle name={site.name[loc]} tagline={site.tagline[loc]} locale={loc} />
+            <VisionToggle label={t("visionButton")} title={t("visionTitle")} text={t("vision")} />
+          </div>
+          {/* Buttons stand on the stage floor: right above the car on phones, by the car's tyres on lg. */}
+          <div className="flex flex-col gap-6 lg:contents">
+            <div className="flex flex-wrap gap-3 lg:absolute lg:start-4 lg:bottom-[14%]">
+              <Link href="/shop" className={buttonClass("inverse")}>
+                <Storefront size={18} weight="regular" aria-hidden />
+                {t("shopCta")}
+              </Link>
+              <Link href="/services" className={buttonClass("inverse")}>
+                <Wrench size={18} weight="regular" aria-hidden />
+                {t("serviceCta")}
+              </Link>
+            </div>
+            <HeroCar
+              alt={t("carAlt")}
+              pickLabel={t("carPick")}
+              names={{
+                silver: t("carColours.silver"),
+                white: t("carColours.white"),
+                black: t("carColours.black"),
+                red: t("carColours.red"),
+                blue: t("carColours.blue"),
+                orange: t("carColours.orange"),
+                green: t("carColours.green"),
+                gold: t("carColours.gold"),
+              }}
+            />
           </div>
         </Container>
       </section>

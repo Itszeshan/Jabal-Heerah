@@ -45,7 +45,21 @@
     "language": "Language"
   },
   "home": {
-    "sub": "Paint, colour matching, and refinish supplies in Industrial Area\u00A04.",
+    "visionButton": "Our vision",
+    "visionTitle": "Our vision",
+    "vision": "Our vision is to set the benchmark in automotive refinishing by delivering exceptional paint quality, precision craftsmanship, and innovative solutions that exceed customer expectations.",
+    "carAlt": "SUV showing the selected paint colour",
+    "carPick": "Pick a paint colour",
+    "carColours": {
+      "silver": "Silver",
+      "white": "Pearl white",
+      "black": "Jet black",
+      "red": "Racing red",
+      "blue": "Royal blue",
+      "orange": "Sunset orange",
+      "green": "Emerald green",
+      "gold": "Desert gold"
+    },
     "shopCta": "Shop products",
     "serviceCta": "Book a service",
     "categoriesTitle": "Shop by shelf",

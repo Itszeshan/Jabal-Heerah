@@ -50,7 +50,10 @@ export function Header() {
   const name = site.name[locale];
 
   return (
-    <header className="sticky top-0 z-30 border-b border-white/10 bg-charcoal text-white">
+    <header className="sticky top-0 z-30 isolate overflow-hidden border-b border-white/10 bg-charcoal text-white">
+      {/* Same src and sizes as the home hero so the browser reuses one download. */}
+      <Image src="/home/hero-stage.webp" alt="" fill sizes="100vw" className="-z-20 object-cover object-top" />
+      <div className="absolute inset-0 -z-10 bg-charcoal/55 lg:bg-charcoal/40" aria-hidden />
       <div className="mx-auto flex h-24 max-w-7xl items-center gap-4 px-4">
         <button
           type="button"
@@ -63,7 +66,7 @@ export function Header() {
           <span className="sr-only">{open ? common("closeMenu") : common("openMenu")}</span>
         </button>
         <Link href="/" className="flex min-w-0 items-center gap-2" onClick={() => setOpen(false)}>
-          <Image src="/jabal-logo.png" alt="" width={989} height={525} className="h-20 w-auto shrink-0" priority />
+          <Image src="/jabal-logo-mark.webp" alt="" width={984} height={379} className="h-16 w-auto shrink-0" priority />
           <span className="sr-only">{name}</span>
         </Link>
 

@@ -53,6 +53,135 @@ button {
   background: var(--color-well);
 }
 
+/*
+ * Polished gold text like the logo: sky-tinted top, hard dark horizon at the middle, warm gold below.
+ * The first layer is a light streak parked off the left edge; `gold-shine` sweeps it across.
+ * Glyphs can overhang their box, and background-clip only paints inside it, hence the padding.
+ */
+.gold-chrome {
+  padding-inline: 0.12em;
+  margin-inline: -0.12em;
+  background-image:
+    linear-gradient(105deg, transparent 44%, rgb(255 255 255 / 0.85) 50%, transparent 56%),
+    linear-gradient(
+      180deg,
+      #e6f6ff 0%,
+      #fff3c4 14%,
+      #f7d470 32%,
+      #c98f22 47%,
+      #5c3705 50%,
+      #9a6414 56%,
+      #e2ae42 70%,
+      #fff1b5 86%,
+      #c58a26 100%
+    );
+  background-size: 250% 100%, 100% 100%;
+  background-position: 100% 0, 0 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 0 rgb(74 44 4 / 0.95)) drop-shadow(0 3px 8px rgb(0 0 0 / 0.55));
+}
+
+@keyframes gold-shine {
+  0% {
+    background-position: 100% 0, 0 0;
+  }
+  30%,
+  100% {
+    background-position: 0% 0, 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gold-chrome {
+    animation: gold-shine 6s ease-in-out 1s infinite;
+  }
+}
+
+/* Hero logo lettering (`hero-title.tsx`): the streak is masked to the artwork set inline. */
+.logo-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+      105deg,
+      transparent 45%,
+      rgb(255 250 225 / 0.55) 48.5%,
+      rgb(255 255 255 / 0.9) 50%,
+      rgb(255 250 225 / 0.55) 51.5%,
+      transparent 55%
+    )
+    no-repeat;
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+}
+
+@keyframes logo-shine {
+  0% {
+    background-position: 100% 0;
+  }
+  30%,
+  100% {
+    background-position: 0% 0;
+  }
+}
+
+@keyframes logo-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes logo-draw {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo-shine {
+    animation: logo-shine 6s ease-in-out 1.8s infinite;
+  }
+
+  .logo-rise {
+    animation: logo-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s) both;
+  }
+
+  .logo-draw {
+    animation: logo-draw 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s) both;
+  }
+}
+
+@media (forced-colors: active) {
+  .logo-shine {
+    display: none;
+  }
+
+  .gold-chrome {
+    background: none;
+    filter: none;
+    color: CanvasText;
+    -webkit-text-fill-color: CanvasText;
+  }
+}
+
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .shelf-card,
   .service-card {

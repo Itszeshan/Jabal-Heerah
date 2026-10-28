@@ -7,6 +7,11 @@ export const site = {
     en: "Jabal Al Heerah Auto Paints",
     ar: "دهانات جبل الحيرة للسيارات",
   },
+  /** The line under the name on the shop logo. */
+  tagline: {
+    en: "commitment to quality",
+    ar: "الالتزام بالجودة",
+  },
   domain: "jabalheerah.ae",
   url: "https://jabalheerah.ae",
   phoneDisplay: "+971 52 853 3654",

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="788" height="420" viewBox="0 0 788 420">
+  <!-- Parts of public/home/suv.webp that must keep their own colour. Black = no paint. -->
+  <g fill="#000">
+    <!-- windscreen -->
+    <polygon points="192,120 290,18 540,12 534,128 420,122 300,124" />
+    <!-- side windows -->
+    <polygon points="540,12 610,16 677,19 728,25 772,36 772,116 616,116 612,84 544,86" />
+    <!-- roof, same shape as scripts/suv-roof.svg -->
+    <polygon points="270,0 788,0 788,40 761,33 728,25 677,19 610,16 533,12 296,19 280,26" />
+    <!-- grille -->
+    <polygon points="40,168 268,168 254,226 44,224" />
+    <!-- headlights -->
+    <polygon points="256,206 272,178 300,171 420,160 418,172 398,190 330,198 270,208" />
+    <polygon points="18,166 50,163 48,202 20,204" />
+    <!-- lower intake -->
+    <polygon points="35,288 120,290 200,293 240,295 256,302 287,344 200,342 100,337 22,331 25,305" />
+    <!-- lower lip and valance under the intake -->
+    <polygon points="0,329 12,332 200,344 272,348 300,351 400,353 400,420 0,420" />
+    <!-- right fog light -->
+    <polygon points="243,267 348,266 353,272 352,281 300,283 258,283" />
+    <!-- right vent: dark opening, two blades, lower edge -->
+    <polygon points="300,282 356,280 362,330 328,330 328,320 320,308 316,292" />
+    <polygon points="277,293 357,292 357,299 279,299" />
+    <polygon points="288,309 358,308 358,316 290,316" />
+    <polygon points="289,328 361,327 361,333 291,333" />
+    <!-- left fog light and vent -->
+    <polygon points="0,257 41,261 32,273 0,272" />
+    <polygon points="0,273 21,273 19,322 0,322" />
+    <!-- tyres and wheels -->
+    <polygon points="435,224 470,232 495,260 505,300 504,350 495,390 470,418 420,421 372,420 360,400 365,365 380,345 393,300 405,262 418,236" />
+    <polygon points="745,200 765,215 775,250 775,300 768,340 750,362 715,363 695,350 690,320 698,285 708,250 722,218" />
+    <!-- tail light -->
+    <polygon points="772,130 788,129 788,143 775,143" />
+  </g>
+</svg>

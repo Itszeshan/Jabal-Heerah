@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="788" height="420" viewBox="0 0 788 420">
+  <!-- Ground shadow across the front fender, both doors and the rear fender of public/home/suv.webp,
+       above the black side trim and below the door handles. Brightened by scripts/chroma-key.ts. -->
+  <polygon fill="#000" points="490,180 530,176 600,166 690,159 712,158 726,166 734,190 728,215 718,242 710,262 527,284 492,288" />
+</svg>
