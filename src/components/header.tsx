@@ -63,8 +63,8 @@ export function Header() {
           <span className="sr-only">{open ? common("closeMenu") : common("openMenu")}</span>
         </button>
         <Link href="/" className="flex min-w-0 items-center gap-2" onClick={() => setOpen(false)}>
-          <Image src="/jabal-badge-512.png" alt="" width={512} height={512} className="size-20 shrink-0" priority />
-          <span className="truncate text-sm font-semibold leading-tight">{name}</span>
+          <Image src="/jabal-logo.png" alt="" width={989} height={525} className="h-20 w-auto shrink-0" priority />
+          <span className="sr-only">{name}</span>
         </Link>
 
         <nav className="ms-4 hidden items-center gap-5 lg:flex" aria-label="Main">

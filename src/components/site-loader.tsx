@@ -75,7 +75,7 @@ export function SiteLoader() {
       <div className="fixed inset-0 z-[80] grid place-items-center bg-paper" role="status" aria-live="polite">
         <div className="nav-progress" />
         <div className="flex flex-col items-center gap-6">
-          <Image src="/jabal-badge-512.png" alt="" width={512} height={512} className="size-24" priority />
+          <Image src="/jabal-logo.png" alt="" width={989} height={525} className="h-32 w-auto" priority />
           <LoadingMark />
           <p className="text-sm text-muted">{t("loading")}</p>
         </div>
