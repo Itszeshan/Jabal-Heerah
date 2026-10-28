@@ -131,7 +131,8 @@
     "availability": "التوفر",
     "related": "منتجات قريبة",
     "decrease": "تقليل الكمية",
-    "increase": "زيادة الكمية"
+    "increase": "زيادة الكمية",
+    "photo": "الصورة {index} من {total}"
   },
   "cart": {
     "title": "السلة",

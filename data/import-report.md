@@ -1,10 +1,10 @@
 # Catalog import
 
-Date: 2026-10-27
+Date: 2026-10-28
 
 - Source rows: 1285
-- Products written: 1224
-- Visible in the shop: 848
+- Products written: 1226
+- Visible in the shop: 850
 - Hidden: 376
 - Variant groups: 32
 - Skipped (price was zero or below): 2
@@ -24,7 +24,7 @@ None. Every source category is in data/category-map.json.
 - Body fillers & putty: 9
 - Thinners: 9
 - Spray paints & aerosols: 14
-- Abrasives & sanding: 39
+- Abrasives & sanding: 41
 - Masking tapes & paper: 25
 - Polishing compounds & pads: 143
 - Spray guns & tools: 51

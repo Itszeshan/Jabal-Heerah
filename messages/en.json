@@ -131,7 +131,8 @@
     "availability": "Availability",
     "related": "Related products",
     "decrease": "Decrease quantity",
-    "increase": "Increase quantity"
+    "increase": "Increase quantity",
+    "photo": "Photo {index} of {total}"
   },
   "cart": {
     "title": "Cart",

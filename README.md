@@ -139,6 +139,7 @@ What you can edit without code:
 - `data/in-stock.csv` — offer ids you know are in the shop. Everything else says "Ask for availability".
 - `data/image-blocklist.csv` — offer ids whose downloaded photo should not be used.
 - `data/brands-extra.csv` — brands to list on the Brands page before they have products (`slug,name`). A brand with no products says "Products coming soon".
+- `data/products-extra.json` — products the shop adds itself (not on the supplier list), in the same shape as `content/products.json`. The importer appends them on every run. Put their photos in `public/products/` and list them in `images`; more than one photo shows a gallery on the product page. Variant ids work with `hidden.csv`, `featured.csv` and `in-stock.csv`.
 - `data/category-map.json` — which shelf a source category belongs on.
 - `public/products/custom/` — drop a photo named with the product link slug, for example `the-product-name.webp`. That photo is the one the site uses.
 

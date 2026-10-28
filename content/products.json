@@ -12358,6 +12358,287 @@
     "createdAt": "2026-10-13"
   },
   {
+    "id": "jah-glory-a4",
+    "slug": "glory-abrasives-a4-sheets",
+    "name": {
+      "en": "Glory Abrasives A4 Sheets",
+      "ar": "ورق سنفرة جلوري A4"
+    },
+    "brand": "glory-abrasives",
+    "category": "abrasives",
+    "subcategory": "",
+    "description": {
+      "en": "Glory premium quality sanding sheets, A4 size (9 x 11 in). Pick the grit from P80 to P2000. Price is per sheet. For wholesale prices, contact us on WhatsApp.",
+      "ar": "ورق سنفرة جلوري بجودة ممتازة، مقاس A4 (9 × 11 إنش). اختر الخشونة من P80 إلى P2000. السعر للورقة الواحدة. لأسعار الجملة تواصل معنا على واتساب."
+    },
+    "images": [
+      "/products/glory-abrasives-a4-sheets-1.webp",
+      "/products/glory-abrasives-a4-sheets-2.webp",
+      "/products/glory-abrasives-a4-sheets-3.webp"
+    ],
+    "variants": [
+      {
+        "id": "glory-a4-p80",
+        "label": {
+          "en": "P80",
+          "ar": "P80"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-A4-P80",
+        "inStock": false
+      },
+      {
+        "id": "glory-a4-p120",
+        "label": {
+          "en": "P120",
+          "ar": "P120"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-A4-P120",
+        "inStock": false
+      },
+      {
+        "id": "glory-a4-p220",
+        "label": {
+          "en": "P220",
+          "ar": "P220"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-A4-P220",
+        "inStock": false
+      },
+      {
+        "id": "glory-a4-p320",
+        "label": {
+          "en": "P320",
+          "ar": "P320"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-A4-P320",
+        "inStock": false
+      },
+      {
+        "id": "glory-a4-p400",
+        "label": {
+          "en": "P400",
+          "ar": "P400"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-A4-P400",
+        "inStock": false
+      },
+      {
+        "id": "glory-a4-p600",
+        "label": {
+          "en": "P600",
+          "ar": "P600"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-A4-P600",
+        "inStock": false
+      },
+      {
+        "id": "glory-a4-p800",
+        "label": {
+          "en": "P800",
+          "ar": "P800"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-A4-P800",
+        "inStock": false
+      },
+      {
+        "id": "glory-a4-p1000",
+        "label": {
+          "en": "P1000",
+          "ar": "P1000"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-A4-P1000",
+        "inStock": false
+      },
+      {
+        "id": "glory-a4-p1200",
+        "label": {
+          "en": "P1200",
+          "ar": "P1200"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-A4-P1200",
+        "inStock": false
+      },
+      {
+        "id": "glory-a4-p1500",
+        "label": {
+          "en": "P1500",
+          "ar": "P1500"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-A4-P1500",
+        "inStock": false
+      },
+      {
+        "id": "glory-a4-p2000",
+        "label": {
+          "en": "P2000",
+          "ar": "P2000"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-A4-P2000",
+        "inStock": false
+      }
+    ],
+    "featured": false,
+    "tags": [
+      "glory-abrasives",
+      "abrasives",
+      "sanding"
+    ],
+    "example": false,
+    "createdAt": "2026-10-28",
+    "hidden": false
+  },
+  {
+    "id": "jah-glory-round",
+    "slug": "glory-abrasives-round-paper",
+    "name": {
+      "en": "Glory Abrasives Round Paper",
+      "ar": "ورق سنفرة دائري جلوري"
+    },
+    "brand": "glory-abrasives",
+    "category": "abrasives",
+    "subcategory": "",
+    "description": {
+      "en": "Glory round sanding paper discs for orbital sanders. Pick the grit from P80 to P2000. Price is per disc. For wholesale prices, contact us on WhatsApp.",
+      "ar": "أقراص ورق سنفرة دائرية من جلوري لماكينات السنفرة. اختر الخشونة من P80 إلى P2000. السعر للقرص الواحد. لأسعار الجملة تواصل معنا على واتساب."
+    },
+    "images": [
+      "/products/glory-abrasives-round-paper-1.webp",
+      "/products/glory-abrasives-round-paper-2.webp"
+    ],
+    "variants": [
+      {
+        "id": "glory-round-p80",
+        "label": {
+          "en": "P80",
+          "ar": "P80"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-RD-P80",
+        "inStock": false
+      },
+      {
+        "id": "glory-round-p120",
+        "label": {
+          "en": "P120",
+          "ar": "P120"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-RD-P120",
+        "inStock": false
+      },
+      {
+        "id": "glory-round-p220",
+        "label": {
+          "en": "P220",
+          "ar": "P220"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-RD-P220",
+        "inStock": false
+      },
+      {
+        "id": "glory-round-p320",
+        "label": {
+          "en": "P320",
+          "ar": "P320"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-RD-P320",
+        "inStock": false
+      },
+      {
+        "id": "glory-round-p400",
+        "label": {
+          "en": "P400",
+          "ar": "P400"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-RD-P400",
+        "inStock": false
+      },
+      {
+        "id": "glory-round-p600",
+        "label": {
+          "en": "P600",
+          "ar": "P600"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-RD-P600",
+        "inStock": false
+      },
+      {
+        "id": "glory-round-p800",
+        "label": {
+          "en": "P800",
+          "ar": "P800"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-RD-P800",
+        "inStock": false
+      },
+      {
+        "id": "glory-round-p1000",
+        "label": {
+          "en": "P1000",
+          "ar": "P1000"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-RD-P1000",
+        "inStock": false
+      },
+      {
+        "id": "glory-round-p1200",
+        "label": {
+          "en": "P1200",
+          "ar": "P1200"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-RD-P1200",
+        "inStock": false
+      },
+      {
+        "id": "glory-round-p1500",
+        "label": {
+          "en": "P1500",
+          "ar": "P1500"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-RD-P1500",
+        "inStock": false
+      },
+      {
+        "id": "glory-round-p2000",
+        "label": {
+          "en": "P2000",
+          "ar": "P2000"
+        },
+        "price": 1,
+        "sku": "JAH-GLORY-RD-P2000",
+        "inStock": false
+      }
+    ],
+    "featured": false,
+    "tags": [
+      "glory-abrasives",
+      "abrasives",
+      "sanding"
+    ],
+    "example": false,
+    "createdAt": "2026-10-28",
+    "hidden": false
+  },
+  {
     "id": "jah-1139",
     "slug": "gs-27-titanium-scratch-remover",
     "name": {

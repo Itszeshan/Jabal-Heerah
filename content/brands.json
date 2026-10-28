@@ -130,6 +130,16 @@
     "count": 19
   },
   {
+    "id": "glory-abrasives",
+    "slug": "glory-abrasives",
+    "name": "Glory Abrasives",
+    "description": {
+      "en": "",
+      "ar": ""
+    },
+    "count": 2
+  },
+  {
     "id": "italco",
     "slug": "italco",
     "name": "Italco",

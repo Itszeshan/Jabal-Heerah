@@ -455,6 +455,31 @@ function main() {
   }
   products.push(...retired.filter((product) => !products.some((item) => item.id === product.id)));
 
+  const extraFile = resolve(ROOT, "data/products-extra.json");
+  const extras = existsSync(extraFile) ? readJson<Product[]>(extraFile) : [];
+  for (const extra of extras) {
+    if (products.some((product) => product.id === extra.id || product.slug === extra.slug)) {
+      skipped.push(`${extra.id} ${extra.name.en} (id or slug already used)`);
+      continue;
+    }
+    const variants = extra.variants.map((variant) => ({ ...variant, inStock: variant.inStock || stockIds.has(variant.id) }));
+    products.push({
+      ...extra,
+      variants,
+      featured: extra.featured || variants.some((variant) => featuredIds.has(variant.id)),
+      hidden: variants.every((variant) => hiddenIds.has(variant.id)),
+    });
+  }
+
+  const extraBrandNames = new Map(
+    readCsv(resolve(ROOT, "data/brands-extra.csv"))
+      .filter((row) => (row.name || "").trim())
+      .map((row) => {
+        const name = row.name.trim();
+        return [(row.slug || "").trim() || brandSlugFor(name), name] as const;
+      }),
+  );
+
   products.sort((a, b) => a.name.en.localeCompare(b.name.en));
 
   const brandCounts = new Map<string, { name: string; count: number }>();
@@ -467,7 +492,7 @@ function main() {
     current.count += 1;
     if (named) {
       const fromRow = rows.find((row) => row.brandSlug === product.brand);
-      current.name = fromRow?.brandName ?? current.name;
+      current.name = fromRow?.brandName ?? extraBrandNames.get(product.brand) ?? current.name;
     }
     brandCounts.set(product.brand, current);
   }
@@ -485,10 +510,7 @@ function main() {
       description: { en: "", ar: "" },
       count: info.count,
     }));
-  for (const row of readCsv(resolve(ROOT, "data/brands-extra.csv"))) {
-    const name = (row.name || "").trim();
-    if (!name) continue;
-    const slug = (row.slug || "").trim() || brandSlugFor(name);
+  for (const [slug, name] of extraBrandNames) {
     if (brands.some((brand) => brand.slug === slug)) continue;
     brands.push({ id: slug, slug, name, description: { en: "", ar: "" }, count: 0 });
   }

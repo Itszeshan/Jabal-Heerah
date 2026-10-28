@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { BuyBox } from "@/components/buy-box";
 import { JsonLd } from "@/components/json-ld";
 import { ProductCard } from "@/components/product-card";
+import { ProductGallery } from "@/components/product-gallery";
 import { ProductMedia } from "@/components/product-media";
 import { Container } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
@@ -43,6 +44,7 @@ export default async function ProductPage({
   const common = await getTranslations("common");
   const nav = await getTranslations("nav");
   const related = relatedProducts(product);
+  const photos = product.images.filter((image) => image.startsWith("/"));
 
   return (
     <Container className="py-8 pb-28 md:py-10 lg:pb-10">
@@ -60,7 +62,11 @@ export default async function ProductPage({
           </div>
         </div>
         <div className="border border-line bg-white lg:col-start-1 lg:row-start-1">
-          <ProductMedia src={product.images[0]} alt={text(product.name, loc)} priority />
+          {photos.length > 1 ? (
+            <ProductGallery images={photos} alt={text(product.name, loc)} />
+          ) : (
+            <ProductMedia src={product.images[0]} alt={text(product.name, loc)} priority />
+          )}
         </div>
       </div>
 
