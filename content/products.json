@@ -649,7 +649,8 @@
           "en": "One",
           "ar": "One"
         },
-        "price": 1,
+        "price": 0,
+        "priceOnRequest": true,
         "sku": "JAH-221",
         "inStock": false
       }
@@ -3126,7 +3127,8 @@
           "en": "One",
           "ar": "One"
         },
-        "price": 2,
+        "price": 0,
+        "priceOnRequest": true,
         "sku": "JAH-131",
         "inStock": false
       }
@@ -14845,7 +14847,7 @@
       "1 L"
     ],
     "example": false,
-    "hidden": false,
+    "hidden": true,
     "createdAt": "2026-10-13"
   },
   {
@@ -46093,7 +46095,8 @@
           "en": "1 INCH",
           "ar": "1 INCH"
         },
-        "price": 3,
+        "price": 0,
+        "priceOnRequest": true,
         "sku": "JAH-1165",
         "inStock": false
       },

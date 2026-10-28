@@ -10,6 +10,8 @@ export type Variant = {
   label: Localized;
   price: number;
   compareAtPrice?: number;
+  /** Price is not shown; buyers ask on WhatsApp. `price` is 0 when set. */
+  priceOnRequest?: boolean;
   sku: string;
   inStock: boolean;
 };

@@ -7,8 +7,9 @@ import { ProductMedia } from "./product-media";
 
 export async function ProductCard({ product, locale }: { product: Product; locale: Locale }) {
   const t = await getTranslations("common");
-  const price = formatAed(minPrice(product), locale);
-  const priced = product.variants.length > 1 ? t("fromPrice", { price }) : price;
+  const lowest = minPrice(product);
+  const price = lowest == null ? "" : formatAed(lowest, locale);
+  const priced = lowest == null ? t("priceOnRequest") : product.variants.length > 1 ? t("fromPrice", { price }) : price;
 
   return (
     <article className="shelf-card flex h-full flex-col">

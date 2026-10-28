@@ -100,6 +100,10 @@ export function buildProductQuestion(productName: string, variant: string, pageU
   ].join("\n");
 }
 
+export function buildQuoteRequest(): string {
+  return ["Quote request - Jabal Al Heerah website", "Products or service needed:"].join("\n");
+}
+
 export function waUrl(message: string): string {
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
 }

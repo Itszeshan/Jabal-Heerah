@@ -53,8 +53,9 @@ export function filterProducts(products: Product[], query: ShopQuery): Product[]
     if (query.category && product.category !== query.category) return false;
     if (query.brand && product.brand !== query.brand) return false;
     const price = minPrice(product);
-    if (query.min != null && price < query.min) return false;
-    if (query.max != null && price > query.max) return false;
+    if ((query.min != null || query.max != null) && price == null) return false;
+    if (query.min != null && price != null && price < query.min) return false;
+    if (query.max != null && price != null && price > query.max) return false;
     if (!q) return true;
     const haystack = [
       product.name.en,
@@ -72,8 +73,8 @@ export function filterProducts(products: Product[], query: ShopQuery): Product[]
 
   const sorted = [...filtered];
   sorted.sort((a, b) => {
-    if (query.sort === "price-asc") return minPrice(a) - minPrice(b);
-    if (query.sort === "price-desc") return minPrice(b) - minPrice(a);
+    if (query.sort === "price-asc") return (minPrice(a) ?? Infinity) - (minPrice(b) ?? Infinity);
+    if (query.sort === "price-desc") return (minPrice(b) ?? -Infinity) - (minPrice(a) ?? -Infinity);
     if (query.sort === "newest") return b.createdAt.localeCompare(a.createdAt);
     return a.name.en.localeCompare(b.name.en);
   });

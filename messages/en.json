@@ -10,6 +10,7 @@
     "inStock": "In stock",
     "askAvailability": "Ask for availability",
     "fromPrice": "From {price}",
+    "priceOnRequest": "Price on WhatsApp",
     "placeholder": "Placeholder",
     "close": "Close",
     "apply": "Apply",
@@ -235,8 +236,12 @@
     "body": "The link may be old, or the product was removed.",
     "cta": "Back to the shop"
   },
+  "topBar": {
+    "whatsapp": "WhatsApp us",
+    "quote": "Get a quote"
+  },
   "cookie": {
-    "text": "This site stores your cart on this phone and, when IDs are set, uses analytics and ad tags.",
+    "text": "We save your cart on this device and use cookies to improve your visit.",
     "accept": "OK"
   }
 }

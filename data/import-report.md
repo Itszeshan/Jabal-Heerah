@@ -4,8 +4,8 @@ Date: 2026-10-28
 
 - Source rows: 1285
 - Products written: 1226
-- Visible in the shop: 850
-- Hidden: 376
+- Visible in the shop: 849
+- Hidden: 377
 - Variant groups: 32
 - Skipped (price was zero or below): 2
 - New items: 0
@@ -19,7 +19,7 @@ None. Every source category is in data/category-map.json.
 
 ## Category counts
 
-- Clear coats & hardeners: 25
+- Clear coats & hardeners: 24
 - Primers: 5
 - Body fillers & putty: 9
 - Thinners: 9

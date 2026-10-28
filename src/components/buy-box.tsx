@@ -35,11 +35,14 @@ export function BuyBox({ product, brand }: { product: Product; brand: string }) 
       content_ids: [variant.sku || product.id],
       content_name: product.name.en,
       content_type: "product",
-      value: variant.price,
+      value: variant.priceOnRequest ? undefined : variant.price,
     });
   }, [product.id, product.name.en, variant]);
 
   if (!variant) return null;
+
+  const onRequest = Boolean(variant.priceOnRequest);
+  const priceText = onRequest ? common("priceOnRequest") : formatAed(variant.price, locale);
 
   const name = text(product.name, locale);
   const variantLabel = text(variant.label, locale);
@@ -86,7 +89,7 @@ export function BuyBox({ product, brand }: { product: Product; brand: string }) 
       {product.example ? (
         <p className="border border-line bg-white px-3 py-2 text-sm">{common("sampleBanner")}</p>
       ) : null}
-      <p className="text-2xl font-semibold">{formatAed(variant.price, locale)}</p>
+      <p className="text-2xl font-semibold">{priceText}</p>
       <p className="text-sm">{variant.inStock ? common("inStock") : common("askAvailability")}</p>
 
       {product.variants.length > 1 ? (
@@ -117,7 +120,7 @@ export function BuyBox({ product, brand }: { product: Product; brand: string }) 
         </p>
       )}
 
-      <div className="flex items-center gap-3">
+      <div className={onRequest ? "hidden" : "flex items-center gap-3"}>
         <span className="text-sm font-semibold" id="qty-label">
           {t("qty")}
         </span>
@@ -145,16 +148,18 @@ export function BuyBox({ product, brand }: { product: Product; brand: string }) 
       </div>
 
       <div className="grid gap-2">
-        <div className="hidden lg:block">
-          <button type="button" className={buttonClass("primary", "w-full")} onClick={addLine}>
-            {added ? t("added") : t("add")}
-          </button>
-        </div>
+        {onRequest ? null : (
+          <div className="hidden lg:block">
+            <button type="button" className={buttonClass("primary", "w-full")} onClick={addLine}>
+              {added ? t("added") : t("add")}
+            </button>
+          </div>
+        )}
         <a
           href={waUrl(askMessage)}
           target="_blank"
           rel="noopener noreferrer"
-          className={buttonClass("secondary")}
+          className={buttonClass(onRequest ? "primary" : "secondary")}
           onClick={() => track("generate_lead", { content_name: product.slug, content_ids: [variant.sku] })}
         >
           {t("ask")}
@@ -169,12 +174,24 @@ export function BuyBox({ product, brand }: { product: Product; brand: string }) 
       <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white p-3 lg:hidden">
         <div className="mx-auto flex max-w-7xl items-center gap-3 pe-28">
           <div className="min-w-0">
-            <p className="truncate text-sm font-semibold">{formatAed(variant.price, locale)}</p>
+            <p className="truncate text-sm font-semibold">{priceText}</p>
             <p className="text-xs text-muted">{variant.inStock ? common("inStock") : common("askAvailability")}</p>
           </div>
-          <button type="button" className={buttonClass("primary", "ms-auto")} onClick={addLine}>
-            {added ? t("added") : t("add")}
-          </button>
+          {onRequest ? (
+            <a
+              href={waUrl(askMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonClass("primary", "ms-auto")}
+              onClick={() => track("generate_lead", { content_name: product.slug, content_ids: [variant.sku] })}
+            >
+              {t("ask")}
+            </a>
+          ) : (
+            <button type="button" className={buttonClass("primary", "ms-auto")} onClick={addLine}>
+              {added ? t("added") : t("add")}
+            </button>
+          )}
         </div>
       </div>
     </div>

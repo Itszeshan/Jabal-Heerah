@@ -59,8 +59,8 @@ export function productJsonLd(product: Product, locale: Locale): Record<string, 
     data.image = `${site.url}${product.images[0]}`;
   }
 
-  if (!product.example) {
-    const variant = product.variants[0];
+  const variant = product.variants[0];
+  if (!product.example && !variant?.priceOnRequest) {
     const offer: Record<string, unknown> = {
       "@type": "Offer",
       priceCurrency: "AED",

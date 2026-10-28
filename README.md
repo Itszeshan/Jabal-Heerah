@@ -133,6 +133,7 @@ What you can edit without code:
 
 - `config/pricing.ts` — markup or discount, per brand or category, and rounding. `showCompareAt` stays off unless you want an old price shown.
 - `data/prices.override.csv` — your price for one item. Use the number from the product SKU (`JAH-481` means offer id `481`).
+- `data/price-on-request.csv` — one `offer_id` per line for items whose price should not show. The site shows "Price on WhatsApp" and the buyer asks on WhatsApp instead of adding to the cart.
 - `data/translations-ar.csv` — Arabic names. Leave a cell empty and the site shows English.
 - `data/hidden.csv` — offer ids to hide. Items that disappear from a later list are added here. Files are not deleted.
 - `data/featured.csv` — offer ids to show on the home page.

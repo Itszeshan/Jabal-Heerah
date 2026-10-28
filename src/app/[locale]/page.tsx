@@ -89,7 +89,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         title: text(product.name, loc),
         body: brandName(product.brand),
         image: product.images.find((image) => image.startsWith("/")) ?? "",
-        meta: formatAed(variant?.price ?? minPrice(product), loc),
+        meta: formatAed(variant?.price ?? minPrice(product) ?? 0, loc),
         compare: variant?.compareAtPrice ? formatAed(variant.compareAtPrice, loc) : undefined,
         cta: t("viewProduct"),
       };

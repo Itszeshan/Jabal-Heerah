@@ -17,7 +17,8 @@ export type CatalogItem = {
   brand: string;
   brandName: string;
   category: string;
-  price: number;
+  /** Null when every size is price on request. */
+  price: number | null;
   sizes: string[];
   inStock: boolean;
   image: string;
@@ -57,8 +58,8 @@ function matches(item: CatalogItem, query: ShopQuery, ignore = ""): boolean {
   if (ignore !== "size" && query.size && !item.sizes.includes(query.size)) return false;
   const min = Number(query.min);
   const max = Number(query.max);
-  if (ignore !== "price" && query.min && Number.isFinite(min) && item.price < min) return false;
-  if (ignore !== "price" && query.max && Number.isFinite(max) && item.price > max) return false;
+  if (ignore !== "price" && query.min && Number.isFinite(min) && (item.price == null || item.price < min)) return false;
+  if (ignore !== "price" && query.max && Number.isFinite(max) && (item.price == null || item.price > max)) return false;
   return true;
 }
 
@@ -165,8 +166,8 @@ export function ShopBrowser({
   const sorted = useMemo(() => {
     const list = filtered.slice();
     list.sort((a, b) => {
-      if (query.sort === "price-asc") return a.price - b.price || a.nameEn.localeCompare(b.nameEn);
-      if (query.sort === "price-desc") return b.price - a.price || a.nameEn.localeCompare(b.nameEn);
+      if (query.sort === "price-asc") return (a.price ?? Infinity) - (b.price ?? Infinity) || a.nameEn.localeCompare(b.nameEn);
+      if (query.sort === "price-desc") return (b.price ?? -Infinity) - (a.price ?? -Infinity) || a.nameEn.localeCompare(b.nameEn);
       if (query.sort === "newest") return b.createdAt.localeCompare(a.createdAt) || a.nameEn.localeCompare(b.nameEn);
       const nameA = locale === "ar" && a.nameAr ? a.nameAr : a.nameEn;
       const nameB = locale === "ar" && b.nameAr ? b.nameAr : b.nameEn;
@@ -298,7 +299,8 @@ export function ShopBrowser({
             <div className="mt-4 grid grid-cols-2 gap-3 xl:grid-cols-3">
               {visible.map((item) => {
                 const name = locale === "ar" && item.nameAr ? item.nameAr : item.nameEn;
-                const price = formatAed(item.price, locale);
+                const price = item.price == null ? "" : formatAed(item.price, locale);
+                const priced = item.price == null ? common("priceOnRequest") : item.sizes.length > 1 ? common("fromPrice", { price }) : price;
                 return (
                   <article key={item.slug} className="shelf-card flex h-full flex-col">
                     <Link href={`/product/${item.slug}`} className="block border-b border-line">
@@ -324,7 +326,7 @@ export function ShopBrowser({
                           {name}
                         </Link>
                       </h2>
-                      <p className="mt-auto pt-2 text-sm font-semibold tabular-nums">{item.sizes.length > 1 ? common("fromPrice", { price }) : price}</p>
+                      <p className="mt-auto pt-2 text-sm font-semibold tabular-nums">{priced}</p>
                       <p className="text-xs text-muted">{item.inStock ? common("inStock") : common("askAvailability")}</p>
                     </div>
                   </article>

@@ -37,6 +37,11 @@ export const site = {
     placeholder: false,
     en: "Saturday to Thursday, 8 AM to 1 PM and 4 PM to 9 PM.\nFriday closed.",
     ar: "من السبت إلى الخميس، ٨ صباحاً إلى ١ ظهراً و٤ عصراً إلى ٩ مساءً.\nالجمعة مغلق.",
+    /** One-line version for the bar above the header. */
+    short: {
+      en: "Sat to Thu, 8 AM to 1 PM and 4 PM to 9 PM",
+      ar: "السبت إلى الخميس، ٨ صباحاً إلى ١ ظهراً و٤ عصراً إلى ٩ مساءً",
+    },
   },
   /** true = prices already include 5% VAT. false = prices exclude 5% VAT. */
   pricesIncludeVat: false,

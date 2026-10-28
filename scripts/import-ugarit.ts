@@ -294,6 +294,7 @@ function main() {
   const hiddenIds = idSet("data/hidden.csv");
   const featuredIds = idSet("data/featured.csv");
   const stockIds = idSet("data/in-stock.csv");
+  const requestIds = existsSync(resolve(ROOT, "data/price-on-request.csv")) ? idSet("data/price-on-request.csv") : new Set<string>();
   const translations = new Map(
     readCsv(resolve(ROOT, "data/translations-ar.csv")).map((row) => [row.id, row.name_ar ?? ""]),
   );
@@ -411,6 +412,9 @@ function main() {
       const variants: Variant[] = chunk.map((row) => {
         seenOffers.add(String(row.offerId));
         const label = row.sizeLabel || "One";
+        if (requestIds.has(String(row.offerId))) {
+          return { id: String(row.offerId), label: { en: label, ar: label }, price: 0, priceOnRequest: true, sku: row.sku, inStock: stockIds.has(String(row.offerId)) };
+        }
         return {
           id: String(row.offerId),
           label: { en: label, ar: label },
@@ -462,7 +466,11 @@ function main() {
       skipped.push(`${extra.id} ${extra.name.en} (id or slug already used)`);
       continue;
     }
-    const variants = extra.variants.map((variant) => ({ ...variant, inStock: variant.inStock || stockIds.has(variant.id) }));
+    const variants = extra.variants.map((variant) => ({
+      ...variant,
+      inStock: variant.inStock || stockIds.has(variant.id),
+      ...(variant.priceOnRequest || requestIds.has(variant.id) ? { price: 0, priceOnRequest: true } : {}),
+    }));
     products.push({
       ...extra,
       variants,
@@ -516,33 +524,36 @@ function main() {
   }
   brands.sort((a, b) => a.name.localeCompare(b.name));
 
-  const index = products.filter((product) => !product.hidden).map((product) => ({
-    slug: product.slug,
-    nameEn: product.name.en,
-    nameAr: product.name.ar,
-    brand: product.brand,
-    brandName: brands.find((brand) => brand.slug === product.brand)?.name ?? product.brand,
-    category: product.category,
-    price: Math.min(...product.variants.map((variant) => variant.price)),
-    sizes: product.variants.map((variant) => variant.label.en),
-    inStock: product.variants.some((variant) => variant.inStock),
-    image: product.images[0] ?? "",
-    createdAt: product.createdAt,
-    search: [
-      product.name.en,
-      product.name.ar,
-      product.brand,
-      product.category,
-      ...product.tags,
-      ...product.variants.map((variant) => `${variant.label.en} ${variant.sku}`),
-    ].join(" ").toLowerCase(),
-  }));
+  const index = products.filter((product) => !product.hidden).map((product) => {
+    const shownPrices = product.variants.filter((variant) => !variant.priceOnRequest).map((variant) => variant.price);
+    return {
+      slug: product.slug,
+      nameEn: product.name.en,
+      nameAr: product.name.ar,
+      brand: product.brand,
+      brandName: brands.find((brand) => brand.slug === product.brand)?.name ?? product.brand,
+      category: product.category,
+      price: shownPrices.length ? Math.min(...shownPrices) : null,
+      sizes: product.variants.map((variant) => variant.label.en),
+      inStock: product.variants.some((variant) => variant.inStock),
+      image: product.images[0] ?? "",
+      createdAt: product.createdAt,
+      search: [
+        product.name.en,
+        product.name.ar,
+        product.brand,
+        product.category,
+        ...product.tags,
+        ...product.variants.map((variant) => `${variant.label.en} ${variant.sku}`),
+      ].join(" ").toLowerCase(),
+    };
+  });
 
   const newOffers = [...seenOffers].filter((offer) => !previousByOffer.has(offer));
   const removedOffers = [...previousByOffer.keys()].filter((offer) => !seenOffers.has(offer));
   const priceChanges = rows.filter((row) => {
     const prev = previousByOffer.get(String(row.offerId));
-    return prev && Math.abs(prev.price - row.price) >= 0.01;
+    return prev && !requestIds.has(String(row.offerId)) && Math.abs(prev.price - row.price) >= 0.01;
   });
 
   writeFileSync(resolve(ROOT, "content/products.json"), `${JSON.stringify(products, null, 2)}\n`);

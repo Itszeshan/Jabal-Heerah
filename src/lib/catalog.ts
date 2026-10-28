@@ -75,7 +75,9 @@ export function saleProducts(): Product[] {
   return getProducts().filter(
     (product) =>
       product.images.some((image) => image.startsWith("/")) &&
-      product.variants.some((variant) => variant.compareAtPrice != null && variant.compareAtPrice > variant.price),
+      product.variants.some(
+        (variant) => !variant.priceOnRequest && variant.compareAtPrice != null && variant.compareAtPrice > variant.price,
+      ),
   );
 }
 
@@ -110,8 +112,10 @@ export function categoryName(slug: string, locale: Locale): string {
   return category ? text(category.name, locale) : slug;
 }
 
-export function minPrice(product: Product): number {
-  return Math.min(...product.variants.map((variant) => variant.price));
+/** Lowest shown price, or null when every variant is price on request. */
+export function minPrice(product: Product): number | null {
+  const prices = product.variants.filter((variant) => !variant.priceOnRequest).map((variant) => variant.price);
+  return prices.length ? Math.min(...prices) : null;
 }
 
 export function productInStock(product: Product): boolean {
