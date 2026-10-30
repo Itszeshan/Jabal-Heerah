@@ -1,11 +1,11 @@
 # Catalog import
 
-Date: 2026-10-28
+Date: 2026-10-30
 
 - Source rows: 1285
-- Products written: 1226
-- Visible in the shop: 849
-- Hidden: 377
+- Products written: 1228
+- Visible in the shop: 850
+- Hidden: 378
 - Variant groups: 32
 - Skipped (price was zero or below): 2
 - New items: 0
@@ -21,7 +21,7 @@ None. Every source category is in data/category-map.json.
 
 - Clear coats & hardeners: 24
 - Primers: 5
-- Body fillers & putty: 9
+- Body fillers & putty: 10
 - Thinners: 9
 - Spray paints & aerosols: 14
 - Abrasives & sanding: 41

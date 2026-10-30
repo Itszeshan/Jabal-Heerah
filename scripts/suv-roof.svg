@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="788" height="420" viewBox="0 0 788 420">
-  <!-- Roof of public/home/suv.webp (above the window line). Cut to the car outline by scripts/chroma-key.ts. -->
-  <polygon fill="#000" points="270,0 788,0 788,40 761,33 728,25 677,19 610,16 533,12 296,19 280,26" />
+<svg xmlns="http://www.w3.org/2000/svg" width="971" height="660" viewBox="0 0 971 660">
+  <!-- Roof panel of the Jetour T2 cut-out above the windscreen and side windows; painted black for every colour.
+       Roof rails are left out by the paint mask, so they stay silver. -->
+  <polygon points="290,0 971,0 971,40 905,57 880,53 708,51 704,45 306,47 290,52" fill="#000"/>
 </svg>

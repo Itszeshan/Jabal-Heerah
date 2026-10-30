@@ -1,35 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="788" height="420" viewBox="0 0 788 420">
-  <!-- Parts of public/home/suv.webp that must keep their own colour. Black = no paint. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="971" height="660" viewBox="0 0 971 660">
+  <!-- Parts of the Jetour T2 cut-out (public/home/suv.webp) that are not body paint. Measured with scripts/grid-crop.ts.
+       Roof, mirror caps, door handles and fuel flap are body colour and stay paintable. -->
   <g fill="#000">
-    <!-- windscreen -->
-    <polygon points="192,120 290,18 540,12 534,128 420,122 300,124" />
-    <!-- side windows -->
-    <polygon points="540,12 610,16 677,19 728,25 772,36 772,116 616,116 612,84 544,86" />
-    <!-- roof, same shape as scripts/suv-roof.svg -->
-    <polygon points="270,0 788,0 788,40 761,33 728,25 677,19 610,16 533,12 296,19 280,26" />
-    <!-- grille -->
-    <polygon points="40,168 268,168 254,226 44,224" />
-    <!-- headlights -->
-    <polygon points="256,206 272,178 300,171 420,160 418,172 398,190 330,198 270,208" />
-    <polygon points="18,166 50,163 48,202 20,204" />
-    <!-- lower intake -->
-    <polygon points="35,288 120,290 200,293 240,295 256,302 287,344 200,342 100,337 22,331 25,305" />
-    <!-- lower lip and valance under the intake -->
-    <polygon points="0,329 12,332 200,344 272,348 300,351 400,353 400,420 0,420" />
-    <!-- right fog light -->
-    <polygon points="243,267 348,266 353,272 352,281 300,283 258,283" />
-    <!-- right vent: dark opening, two blades, lower edge -->
-    <polygon points="300,282 356,280 362,330 328,330 328,320 320,308 316,292" />
-    <polygon points="277,293 357,292 357,299 279,299" />
-    <polygon points="288,309 358,308 358,316 290,316" />
-    <polygon points="289,328 361,327 361,333 291,333" />
-    <!-- left fog light and vent -->
-    <polygon points="0,257 41,261 32,273 0,272" />
-    <polygon points="0,273 21,273 19,322 0,322" />
-    <!-- tyres and wheels -->
-    <polygon points="435,224 470,232 495,260 505,300 504,350 495,390 470,418 420,421 372,420 360,400 365,365 380,345 393,300 405,262 418,236" />
-    <polygon points="745,200 765,215 775,250 775,300 768,340 750,362 715,363 695,350 690,320 698,285 708,250 722,218" />
-    <!-- tail light -->
-    <polygon points="772,130 788,129 788,143 775,143" />
+    <!-- Roof rails -->
+    <polygon points="365,0 580,0 580,22 365,26"/>
+    <polygon points="698,0 875,0 878,30 700,32"/>
+    <!-- Windscreen with A-pillars, and the side windows down to the belt line -->
+    <polygon points="300,47 712,45 712,196 208,196"/>
+    <polygon points="708,44 905,46 912,100 912,140 900,160 830,172 828,152 820,146 810,143 750,143 741,147 737,158 733,200 715,198 706,120"/>
+    <!-- Headlights and upper grille with its chrome bar -->
+    <polygon points="8,293 60,291 200,297 300,299 400,300 480,297 540,294 562,294 566,300 566,384 540,386 480,389 300,388 200,389 100,386 60,380 20,376 8,370"/>
+    <!-- Lower grille and corner vents with fog lights -->
+    <polygon points="78,405 414,405 414,480 78,480"/>
+    <polygon points="17,392 38,392 38,469 30,469 24,467 19,463 17,462"/>
+    <polygon points="535,401 557,401 557,486 528,486 528,465 535,463"/>
+    <!-- Silver skid plate, black lower lip and the far front tyre -->
+    <polygon points="0,508 78,506 80,476 416,476 418,507 575,507 580,660 0,660"/>
+    <!-- Near front tyre and wheel well -->
+    <polygon points="722,335 742,340 752,380 755,480 748,560 735,620 700,660 600,660 578,610 578,540 600,505 632,500 645,450 656,400 673,360 696,343"/>
+    <!-- Rear tyre and wheel well -->
+    <polygon points="933,298 962,290 971,300 971,520 940,535 870,535 852,500 855,450 882,430 898,413 905,360 915,322 936,300"/>
+    <!-- Black sill and side step -->
+    <polygon points="752,458 875,415 905,425 905,445 750,512"/>
   </g>
 </svg>

@@ -8,7 +8,9 @@ import catalog from "../../content/catalog-index.json";
 import { FilterSheet } from "@/components/filter-sheet";
 import { Link, useRouter } from "@/i18n/navigation";
 import { formatAed } from "@/lib/format";
+import { buildPriceRequest, waUrl } from "@/lib/whatsapp";
 import type { Locale } from "@/types/content";
+import { AskPriceLink } from "./ask-price-link";
 
 export type CatalogItem = {
   slug: string;
@@ -40,6 +42,7 @@ export type ShopQuery = {
 type CategoryOption = { slug: string; name: string };
 
 const items = catalog as CatalogItem[];
+const hasPrices = items.some((item) => item.price != null);
 const chips = ["#1b1e22", "#c44912", "#f7f7f8", "#5c6b73"];
 
 const UNIT_RANK: Record<string, number> = { ML: 1, L: 2, G: 3, KG: 4, GAL: 5, MM: 6, CM: 7, INCH: 8, PCS: 9 };
@@ -218,27 +221,29 @@ export function ShopBrowser({
         options={sizeFacets.map(([label, count]) => ({ id: label, label, count }))}
         onPick={(size) => patch({ size })}
       />
-      <fieldset className="grid gap-2">
-        <legend className="text-sm font-semibold">{t("price")}</legend>
-        <label className="grid gap-1 text-xs text-muted">
-          {t("min")}
-          <input
-            inputMode="decimal"
-            value={query.min}
-            onChange={(event) => patch({ min: event.target.value }, 350)}
-            className="min-h-11 border border-line bg-white px-3 text-sm text-ink"
-          />
-        </label>
-        <label className="grid gap-1 text-xs text-muted">
-          {t("max")}
-          <input
-            inputMode="decimal"
-            value={query.max}
-            onChange={(event) => patch({ max: event.target.value }, 350)}
-            className="min-h-11 border border-line bg-white px-3 text-sm text-ink"
-          />
-        </label>
-      </fieldset>
+      {hasPrices ? (
+        <fieldset className="grid gap-2">
+          <legend className="text-sm font-semibold">{t("price")}</legend>
+          <label className="grid gap-1 text-xs text-muted">
+            {t("min")}
+            <input
+              inputMode="decimal"
+              value={query.min}
+              onChange={(event) => patch({ min: event.target.value }, 350)}
+              className="min-h-11 border border-line bg-white px-3 text-sm text-ink"
+            />
+          </label>
+          <label className="grid gap-1 text-xs text-muted">
+            {t("max")}
+            <input
+              inputMode="decimal"
+              value={query.max}
+              onChange={(event) => patch({ max: event.target.value }, 350)}
+              className="min-h-11 border border-line bg-white px-3 text-sm text-ink"
+            />
+          </label>
+        </fieldset>
+      ) : null}
       {filtersActive ? (
         <button
           type="button"
@@ -288,8 +293,12 @@ export function ShopBrowser({
                 className="min-h-11 border border-line bg-white px-3"
               >
                 <option value="name">{t("sortName")}</option>
-                <option value="price-asc">{t("sortPriceAsc")}</option>
-                <option value="price-desc">{t("sortPriceDesc")}</option>
+                {hasPrices ? (
+                  <>
+                    <option value="price-asc">{t("sortPriceAsc")}</option>
+                    <option value="price-desc">{t("sortPriceDesc")}</option>
+                  </>
+                ) : null}
                 <option value="newest">{t("sortNewest")}</option>
               </select>
             </label>
@@ -300,7 +309,7 @@ export function ShopBrowser({
               {visible.map((item) => {
                 const name = locale === "ar" && item.nameAr ? item.nameAr : item.nameEn;
                 const price = item.price == null ? "" : formatAed(item.price, locale);
-                const priced = item.price == null ? common("priceOnRequest") : item.sizes.length > 1 ? common("fromPrice", { price }) : price;
+                const priced = item.sizes.length > 1 ? common("fromPrice", { price }) : price;
                 return (
                   <article key={item.slug} className="shelf-card flex h-full flex-col">
                     <Link href={`/product/${item.slug}`} className="block border-b border-line">
@@ -326,7 +335,16 @@ export function ShopBrowser({
                           {name}
                         </Link>
                       </h2>
-                      <p className="mt-auto pt-2 text-sm font-semibold tabular-nums">{priced}</p>
+                      {item.price == null ? (
+                        <AskPriceLink
+                          href={waUrl(buildPriceRequest(item.nameEn, `${site.url}/${locale}/product/${item.slug}`))}
+                          label={common("priceOnRequest")}
+                          slug={item.slug}
+                          className="mt-auto w-full px-3"
+                        />
+                      ) : (
+                        <p className="mt-auto pt-2 text-sm font-semibold tabular-nums">{priced}</p>
+                      )}
                       <p className="text-xs text-muted">{item.inStock ? common("inStock") : common("askAvailability")}</p>
                     </div>
                   </article>

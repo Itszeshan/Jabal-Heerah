@@ -100,6 +100,14 @@ export function buildProductQuestion(productName: string, variant: string, pageU
   ].join("\n");
 }
 
+export function buildPriceRequest(productName: string, pageUrl: string, variant?: string): string {
+  return [
+    "Price request - Jabal Al Heerah website",
+    variant ? `Product: ${clean(productName)} - ${clean(variant)}` : `Product: ${clean(productName)}`,
+    pageUrl,
+  ].join("\n");
+}
+
 export function buildQuoteRequest(): string {
   return ["Quote request - Jabal Al Heerah website", "Products or service needed:"].join("\n");
 }

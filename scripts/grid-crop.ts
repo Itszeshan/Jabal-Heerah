@@ -13,8 +13,8 @@ async function main() {
     process.exit(1);
   }
 
-  const w = width * scale;
-  const h = height * scale;
+  const w = Math.round(width * scale);
+  const h = Math.round(height * scale);
   const lines: string[] = [];
   for (let x = Math.ceil(left / step) * step; x <= left + width; x += step) {
     const px = (x - left) * scale;

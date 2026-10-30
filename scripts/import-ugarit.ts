@@ -412,7 +412,7 @@ function main() {
       const variants: Variant[] = chunk.map((row) => {
         seenOffers.add(String(row.offerId));
         const label = row.sizeLabel || "One";
-        if (requestIds.has(String(row.offerId))) {
+        if (pricing.askForPriceAll || requestIds.has(String(row.offerId))) {
           return { id: String(row.offerId), label: { en: label, ar: label }, price: 0, priceOnRequest: true, sku: row.sku, inStock: stockIds.has(String(row.offerId)) };
         }
         return {
@@ -469,7 +469,7 @@ function main() {
     const variants = extra.variants.map((variant) => ({
       ...variant,
       inStock: variant.inStock || stockIds.has(variant.id),
-      ...(variant.priceOnRequest || requestIds.has(variant.id) ? { price: 0, priceOnRequest: true } : {}),
+      ...(pricing.askForPriceAll || variant.priceOnRequest || requestIds.has(variant.id) ? { price: 0, priceOnRequest: true } : {}),
     }));
     products.push({
       ...extra,

@@ -1,15 +1,18 @@
 import { getTranslations } from "next-intl/server";
+import { site } from "../../config/site";
 import { Link } from "@/i18n/navigation";
 import { brandName, minPrice, productInStock, text } from "@/lib/catalog";
 import { formatAed } from "@/lib/format";
+import { buildPriceRequest, waUrl } from "@/lib/whatsapp";
 import type { Locale, Product } from "@/types/content";
+import { AskPriceLink } from "./ask-price-link";
 import { ProductMedia } from "./product-media";
 
 export async function ProductCard({ product, locale }: { product: Product; locale: Locale }) {
   const t = await getTranslations("common");
   const lowest = minPrice(product);
   const price = lowest == null ? "" : formatAed(lowest, locale);
-  const priced = lowest == null ? t("priceOnRequest") : product.variants.length > 1 ? t("fromPrice", { price }) : price;
+  const priced = product.variants.length > 1 ? t("fromPrice", { price }) : price;
 
   return (
     <article className="shelf-card flex h-full flex-col">
@@ -23,7 +26,16 @@ export async function ProductCard({ product, locale }: { product: Product; local
             {text(product.name, locale)}
           </Link>
         </h3>
-        <p className="mt-auto pt-2 text-sm font-semibold tabular-nums">{priced}</p>
+        {lowest == null ? (
+          <AskPriceLink
+            href={waUrl(buildPriceRequest(product.name.en, `${site.url}/${locale}/product/${product.slug}`))}
+            label={t("priceOnRequest")}
+            slug={product.slug}
+            className="mt-auto w-full px-3"
+          />
+        ) : (
+          <p className="mt-auto pt-2 text-sm font-semibold tabular-nums">{priced}</p>
+        )}
         <p className="flex flex-wrap items-center gap-2 text-xs text-muted">
           <span>{productInStock(product) ? t("inStock") : t("askAvailability")}</span>
           {product.example ? (

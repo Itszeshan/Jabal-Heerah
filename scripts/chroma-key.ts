@@ -2,13 +2,14 @@ import sharp from "sharp";
 
 /**
  * Cuts a photo shot on a flat green background into a transparent webp.
- * --paint-mask writes a mask that is white where the photo is body paint and transparent on dark glass,
- * tyres and grille and on bright lights, so colour can be laid on the body only.
+ * --paint-mask writes a mask that is white where the photo is body paint (highlights included) and transparent
+ * on dark trim, glass and tyres; `scripts/car-colours.ts` repaints the body through it.
  * --exclude takes an SVG (same size as the cut-out) whose shapes the paint mask must skip, such as windows and wheels.
- * --roof takes an SVG whose shapes become --roof-mask (cut to the car outline), for a fixed roof colour.
  * --lift takes an SVG marking a shadow on the body; mid-tone pixels there are brightened towards the lit paint.
+ * --glass takes an SVG over windows the background shows through; it stays opaque there, and the green
+ *        (already pulled down to the red/blue level by the spill fix) reads as dark tinted glass.
  * Usage: npx tsx scripts/chroma-key.ts <input image> <output .webp> [--paint-mask out.webp] [--exclude in.svg]
- *        [--roof in.svg --roof-mask out.webp] [--lift in.svg]
+ *        [--lift in.svg] [--glass in.svg]
  */
 /** Brightness of the lit body paint in the source photo, and how far shadowed paint is pulled towards it (0.8 leaves 20% of the shadow). */
 const LIFT_TARGET = 188;
@@ -48,15 +49,14 @@ async function main() {
   const [input, output] = args;
   if (!input || !output || input.startsWith("--") || output.startsWith("--")) {
     console.error(
-      "Usage: npx tsx scripts/chroma-key.ts <input image> <output .webp> [--paint-mask out.webp] [--exclude in.svg] [--roof in.svg --roof-mask out.webp] [--lift in.svg]",
+      "Usage: npx tsx scripts/chroma-key.ts <input image> <output .webp> [--paint-mask out.webp] [--exclude in.svg] [--lift in.svg] [--glass in.svg]",
     );
     process.exit(1);
   }
   const paintMaskOutput = option(args, "--paint-mask");
   const excludeSvg = option(args, "--exclude");
-  const roofSvg = option(args, "--roof");
-  const roofMaskOutput = option(args, "--roof-mask");
   const liftSvg = option(args, "--lift");
+  const glassSvg = option(args, "--glass");
 
   const { data, info } = await sharp(input).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
   for (let i = 0; i < data.length; i += 4) {
@@ -76,6 +76,14 @@ async function main() {
   const car = await sharp(trimmed).raw().toBuffer({ resolveWithObject: true });
   const { width, height } = car.info;
   const pixels = width * height;
+
+  if (glassSvg) {
+    const region = await svgAlpha(glassSvg, width, height);
+    for (let p = 0; p < pixels; p++) {
+      const i = p * 4 + 3;
+      car.data[i] = Math.max(car.data[i], region[p]);
+    }
+  }
 
   if (liftSvg) {
     const region = await svgAlpha(liftSvg, width, height, 6);
@@ -102,16 +110,9 @@ async function main() {
       const i = p * 4;
       const lum = 0.299 * car.data[i] + 0.587 * car.data[i + 1] + 0.114 * car.data[i + 2];
       const keep = excluded ? 1 - excluded[p] / 255 : 1;
-      paint[p] = Math.round(ramp(lum, 35, 70) * (1 - ramp(lum, 235, 252)) * keep * car.data[i + 3]);
+      paint[p] = Math.round(ramp(lum, 30, 60) * keep * car.data[i + 3]);
     }
     await writeMask(paint, width, height, paintMaskOutput);
-  }
-
-  if (roofSvg && roofMaskOutput) {
-    const shape = await svgAlpha(roofSvg, width, height);
-    const roof = Buffer.alloc(pixels);
-    for (let p = 0; p < pixels; p++) roof[p] = Math.round((shape[p] / 255) * car.data[p * 4 + 3]);
-    await writeMask(roof, width, height, roofMaskOutput);
   }
 }
 

@@ -77,7 +77,7 @@ export default async function LocaleLayout({
   const t = await getTranslations("common");
 
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className={`${latin.variable} ${arabic.variable}`}>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} data-scroll-behavior="smooth" className={`${latin.variable} ${arabic.variable}`}>
       <body className="min-h-dvh antialiased">
         <NextIntlClientProvider messages={messages}>
           <a

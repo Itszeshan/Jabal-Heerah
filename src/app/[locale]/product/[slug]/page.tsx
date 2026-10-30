@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { BuyBox } from "@/components/buy-box";
 import { JsonLd } from "@/components/json-ld";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { ProductCard } from "@/components/product-card";
 import { ProductGallery } from "@/components/product-gallery";
 import { ProductMedia } from "@/components/product-media";
@@ -48,6 +49,7 @@ export default async function ProductPage({
 
   return (
     <Container className="py-8 pb-28 md:py-10 lg:pb-10">
+      <ScrollToTop />
       <JsonLd data={productJsonLd(product, loc)} />
       <nav aria-label={common("breadcrumb")} className="mb-6 text-sm text-muted">
         <Link href="/" className="hover:text-ink">{common("home")}</Link>
@@ -61,7 +63,7 @@ export default async function ProductPage({
             <BuyBox product={product} brand={brandName(product.brand)} />
           </div>
         </div>
-        <div className="border border-line bg-white lg:col-start-1 lg:row-start-1">
+        <div className="order-first border border-line bg-white lg:order-none lg:col-start-1 lg:row-start-1">
           {photos.length > 1 ? (
             <ProductGallery images={photos} alt={text(product.name, loc)} />
           ) : (

@@ -175,7 +175,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               alt={t("carAlt")}
               pickLabel={t("carPick")}
               names={{
-                silver: t("carColours.silver"),
+                lightGrey: t("carColours.lightGrey"),
                 white: t("carColours.white"),
                 black: t("carColours.black"),
                 red: t("carColours.red"),

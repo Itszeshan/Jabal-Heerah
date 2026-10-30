@@ -277,5 +277,110 @@
     ],
     "example": false,
     "createdAt": "2026-10-28"
+  },
+  {
+    "id": "jah-kapci-putty-3-5kg",
+    "slug": "kapci-polyester-putty-3-5kg",
+    "name": {
+      "en": "Kapci Polyester Putty 3.5 KG",
+      "ar": "معجون بوليستر كابسي 3.5 كغ"
+    },
+    "brand": "kapci",
+    "category": "body-fillers",
+    "subcategory": "",
+    "description": {
+      "en": "Kapci Coatings Polyester Putty body filler, 3.5 KG. Available in grey and yellow. For price, contact us on WhatsApp.",
+      "ar": "معجون بوليستر من كابسي كوتينغز لتعبئة الهيكل، 3.5 كغ. متوفر باللون الرمادي والأصفر. للسعر تواصل معنا على واتساب."
+    },
+    "images": [
+      "/products/kapci-polyester-putty-3-5kg.webp"
+    ],
+    "variants": [
+      {
+        "id": "kapci-putty-3-5kg-grey",
+        "label": {
+          "en": "Grey 3.5 KG",
+          "ar": "رمادي 3.5 كغ"
+        },
+        "price": 0,
+        "priceOnRequest": true,
+        "sku": "JAH-KAPCI-PUTTY-3.5KG-GREY",
+        "inStock": false
+      },
+      {
+        "id": "kapci-putty-3-5kg-yellow",
+        "label": {
+          "en": "Yellow 3.5 KG",
+          "ar": "أصفر 3.5 كغ"
+        },
+        "price": 0,
+        "priceOnRequest": true,
+        "sku": "JAH-KAPCI-PUTTY-3.5KG-YELLOW",
+        "inStock": false
+      }
+    ],
+    "featured": false,
+    "tags": [
+      "kapci",
+      "body-fillers",
+      "putty",
+      "3.5 KG",
+      "grey",
+      "yellow"
+    ],
+    "example": false,
+    "createdAt": "2026-10-30"
+  },
+  {
+    "id": "jah-kapci-putty-1-85kg",
+    "slug": "kapci-polyester-putty-350-1-85kg",
+    "name": {
+      "en": "Kapci Polyester Putty 350 1.85KG",
+      "ar": "معجون بوليستر كابسي 350 1.85 كغ"
+    },
+    "brand": "kapci",
+    "category": "body-fillers",
+    "subcategory": "",
+    "description": {
+      "en": "Kapci Coatings Polyester Putty 350 body filler, 1.85 KG. Available in grey and yellow. For wholesale prices, contact us on WhatsApp.",
+      "ar": "معجون بوليستر 350 من كابسي كوتينغز لتعبئة الهيكل، 1.85 كغ. متوفر باللون الرمادي والأصفر. لأسعار الجملة تواصل معنا على واتساب."
+    },
+    "images": [
+      "/products/kapci-polyester-putty-350-1-85kg.webp"
+    ],
+    "variants": [
+      {
+        "id": "kapci-putty-1-85kg-grey",
+        "label": {
+          "en": "Grey 1.85 KG",
+          "ar": "رمادي 1.85 كغ"
+        },
+        "price": 30,
+        "sku": "JAH-KAPCI-PUTTY-1.85KG-GREY",
+        "inStock": false
+      },
+      {
+        "id": "kapci-putty-1-85kg-yellow",
+        "label": {
+          "en": "Yellow 1.85 KG",
+          "ar": "أصفر 1.85 كغ"
+        },
+        "price": 0,
+        "priceOnRequest": true,
+        "sku": "JAH-KAPCI-PUTTY-1.85KG-YELLOW",
+        "inStock": false
+      }
+    ],
+    "featured": false,
+    "tags": [
+      "kapci",
+      "body-fillers",
+      "putty",
+      "1.85 KG",
+      "grey",
+      "yellow"
+    ],
+    "example": false,
+    "createdAt": "2026-10-30"
   }
 ]

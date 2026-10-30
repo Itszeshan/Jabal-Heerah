@@ -15,6 +15,7 @@
 html {
   color-scheme: light;
   scroll-behavior: smooth;
+  overflow-anchor: none;
 }
 
 body {
