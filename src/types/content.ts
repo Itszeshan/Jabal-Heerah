@@ -48,6 +48,10 @@ export type Brand = {
   name: string;
   description: Localized;
   count?: number;
+  /** `/brands/<slug>.webp`, set by the importer from `data/brand-logos.csv`. */
+  logo?: string;
+  /** Background the logo is drawn for; "dark" for white or light artwork. */
+  logoBackground?: "light" | "dark";
 };
 
 export type Service = {

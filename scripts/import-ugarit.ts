@@ -524,6 +524,15 @@ function main() {
   }
   brands.sort((a, b) => a.name.localeCompare(b.name));
 
+  const logoFile = resolve(ROOT, "data/brand-logos.csv");
+  const logos = existsSync(logoFile) ? readCsv(logoFile) : [];
+  for (const brand of brands) {
+    const row = logos.find((item) => item.slug === brand.slug);
+    if (!row || !existsSync(resolve(ROOT, `public/brands/${brand.slug}.webp`))) continue;
+    brand.logo = `/brands/${brand.slug}.webp`;
+    brand.logoBackground = row.background === "dark" ? "dark" : "light";
+  }
+
   const index = products.filter((product) => !product.hidden).map((product) => {
     const shownPrices = product.variants.filter((variant) => !variant.priceOnRequest).map((variant) => variant.price);
     return {
@@ -553,7 +562,7 @@ function main() {
   const removedOffers = [...previousByOffer.keys()].filter((offer) => !seenOffers.has(offer));
   const priceChanges = rows.filter((row) => {
     const prev = previousByOffer.get(String(row.offerId));
-    return prev && !requestIds.has(String(row.offerId)) && Math.abs(prev.price - row.price) >= 0.01;
+    return prev && !pricing.askForPriceAll && !requestIds.has(String(row.offerId)) && Math.abs(prev.price - row.price) >= 0.01;
   });
 
   writeFileSync(resolve(ROOT, "content/products.json"), `${JSON.stringify(products, null, 2)}\n`);

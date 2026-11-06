@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { PendingImage } from "@/components/pending-image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { BrandMedia, brandWellClass } from "@/components/brand-media";
 import { Container } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
-import { brandImage, getBrands, text } from "@/lib/catalog";
+import { getBrands, text } from "@/lib/catalog";
 import { pageMetadata } from "@/lib/metadata";
 import type { Locale } from "@/types/content";
 
@@ -32,19 +32,15 @@ export default async function BrandsPage({ params }: { params: Promise<{ locale:
       <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">{t("intro")}</p>
       <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {brands.map((brand) => {
-          const image = brandImage(brand.slug);
           const comingSoon = brand.count === 0;
-          const media = image ? (
-            <PendingImage src={image} alt={brand.name} fill sizes="(min-width: 1024px) 30vw, 50vw" className="object-contain p-4" />
-          ) : (
-            <span className="flex h-full items-end p-4 text-2xl font-semibold">{brand.name}</span>
-          );
+          const media = <BrandMedia brand={brand} alt={brand.name} sizes="(min-width: 1024px) 30vw, 50vw" nameFallback />;
+          const well = `${brandWellClass(brand)} relative block aspect-[4/3] border-b border-line`;
           return (
             <li key={brand.id} className="shelf-card flex flex-col">
               {comingSoon ? (
-                <div className="photo-well relative block aspect-[4/3] border-b border-line">{media}</div>
+                <div className={well}>{media}</div>
               ) : (
-                <Link href={`/shop?brand=${brand.slug}`} className="photo-well relative block aspect-[4/3] border-b border-line">
+                <Link href={`/shop?brand=${brand.slug}`} className={well}>
                   {media}
                 </Link>
               )}

@@ -7,7 +7,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 98
+    "count": 98,
+    "logo": "/brands/3m.webp",
+    "logoBackground": "light"
   },
   {
     "id": "alva",
@@ -17,7 +19,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 2
+    "count": 2,
+    "logo": "/brands/alva.webp",
+    "logoBackground": "light"
   },
   {
     "id": "armor-all",
@@ -27,7 +31,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 14
+    "count": 14,
+    "logo": "/brands/armor-all.webp",
+    "logoBackground": "light"
   },
   {
     "id": "asmaco",
@@ -37,7 +43,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 11
+    "count": 11,
+    "logo": "/brands/asmaco.webp",
+    "logoBackground": "light"
   },
   {
     "id": "challanger",
@@ -47,7 +55,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 0
+    "count": 0,
+    "logo": "/brands/challanger.webp",
+    "logoBackground": "light"
   },
   {
     "id": "devilbiss",
@@ -57,7 +67,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 27
+    "count": 27,
+    "logo": "/brands/devilbiss.webp",
+    "logoBackground": "light"
   },
   {
     "id": "dewalt",
@@ -67,7 +79,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 2
+    "count": 2,
+    "logo": "/brands/dewalt.webp",
+    "logoBackground": "light"
   },
   {
     "id": "dixie",
@@ -107,7 +121,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 7
+    "count": 7,
+    "logo": "/brands/farecla.webp",
+    "logoBackground": "dark"
   },
   {
     "id": "first",
@@ -117,7 +133,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 0
+    "count": 0,
+    "logo": "/brands/first.webp",
+    "logoBackground": "light"
   },
   {
     "id": "formula-1",
@@ -127,7 +145,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 19
+    "count": 19,
+    "logo": "/brands/formula-1.webp",
+    "logoBackground": "light"
   },
   {
     "id": "glory-abrasives",
@@ -137,7 +157,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 2
+    "count": 2,
+    "logo": "/brands/glory-abrasives.webp",
+    "logoBackground": "light"
   },
   {
     "id": "italco",
@@ -147,7 +169,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 13
+    "count": 13,
+    "logo": "/brands/italco.webp",
+    "logoBackground": "light"
   },
   {
     "id": "kapci",
@@ -157,7 +181,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 14
+    "count": 14,
+    "logo": "/brands/kapci.webp",
+    "logoBackground": "light"
   },
   {
     "id": "knm",
@@ -177,7 +203,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 0
+    "count": 0,
+    "logo": "/brands/liberty.webp",
+    "logoBackground": "light"
   },
   {
     "id": "liqui-moly",
@@ -187,7 +215,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 23
+    "count": 23,
+    "logo": "/brands/liqui-moly.webp",
+    "logoBackground": "light"
   },
   {
     "id": "makita",
@@ -197,7 +227,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 2
+    "count": 2,
+    "logo": "/brands/makita.webp",
+    "logoBackground": "light"
   },
   {
     "id": "max-meyer",
@@ -207,7 +239,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 2
+    "count": 2,
+    "logo": "/brands/max-meyer.webp",
+    "logoBackground": "light"
   },
   {
     "id": "maxshine",
@@ -217,7 +251,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 129
+    "count": 129,
+    "logo": "/brands/maxshine.webp",
+    "logoBackground": "light"
   },
   {
     "id": "meguiars",
@@ -227,7 +263,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 128
+    "count": 128,
+    "logo": "/brands/meguiars.webp",
+    "logoBackground": "light"
   },
   {
     "id": "mido",
@@ -237,7 +275,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 1
+    "count": 1,
+    "logo": "/brands/mido.webp",
+    "logoBackground": "light"
   },
   {
     "id": "mothers",
@@ -247,7 +287,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 14
+    "count": 14,
+    "logo": "/brands/mothers.webp",
+    "logoBackground": "light"
   },
   {
     "id": "nason",
@@ -257,7 +299,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 11
+    "count": 11,
+    "logo": "/brands/nason.webp",
+    "logoBackground": "light"
   },
   {
     "id": "numix",
@@ -267,7 +311,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 0
+    "count": 0,
+    "logo": "/brands/numix.webp",
+    "logoBackground": "dark"
   },
   {
     "id": "other",
@@ -287,7 +333,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 1
+    "count": 1,
+    "logo": "/brands/polikor.webp",
+    "logoBackground": "light"
   },
   {
     "id": "polisher",
@@ -307,7 +355,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 0
+    "count": 0,
+    "logo": "/brands/ritver.webp",
+    "logoBackground": "light"
   },
   {
     "id": "roberlo",
@@ -317,7 +367,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 11
+    "count": 11,
+    "logo": "/brands/roberlo.webp",
+    "logoBackground": "light"
   },
   {
     "id": "rupes",
@@ -327,7 +379,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 64
+    "count": 64,
+    "logo": "/brands/rupes.webp",
+    "logoBackground": "light"
   },
   {
     "id": "safety-pro",
@@ -347,7 +401,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 3
+    "count": 3,
+    "logo": "/brands/sikaflex.webp",
+    "logoBackground": "light"
   },
   {
     "id": "sikkens",
@@ -357,7 +413,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 2
+    "count": 2,
+    "logo": "/brands/sikkens.webp",
+    "logoBackground": "light"
   },
   {
     "id": "sonax",
@@ -367,7 +425,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 91
+    "count": 91,
+    "logo": "/brands/sonax.webp",
+    "logoBackground": "light"
   },
   {
     "id": "sprint",
@@ -377,7 +437,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 2
+    "count": 2,
+    "logo": "/brands/sprint.webp",
+    "logoBackground": "light"
   },
   {
     "id": "standox",
@@ -387,7 +449,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 9
+    "count": 9,
+    "logo": "/brands/standox.webp",
+    "logoBackground": "light"
   },
   {
     "id": "stp",
@@ -397,7 +461,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 1
+    "count": 1,
+    "logo": "/brands/stp.webp",
+    "logoBackground": "light"
   },
   {
     "id": "turtle-wax",
@@ -407,7 +473,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 86
+    "count": 86,
+    "logo": "/brands/turtle-wax.webp",
+    "logoBackground": "dark"
   },
   {
     "id": "upol-raptor",
@@ -417,7 +485,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 1
+    "count": 1,
+    "logo": "/brands/upol-raptor.webp",
+    "logoBackground": "light"
   },
   {
     "id": "vixon",
@@ -427,7 +497,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 4
+    "count": 4,
+    "logo": "/brands/vixon.webp",
+    "logoBackground": "light"
   },
   {
     "id": "wurth",
@@ -437,7 +509,9 @@
       "en": "",
       "ar": ""
     },
-    "count": 27
+    "count": 27,
+    "logo": "/brands/wurth.webp",
+    "logoBackground": "light"
   },
   {
     "id": "x-pro-99",

@@ -4,6 +4,7 @@ import { PendingImage } from "@/components/pending-image";
 import { Clock, MapPin, Phone, Storefront, WhatsappLogo, Wrench } from "@phosphor-icons/react/ssr";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { site } from "../../../config/site";
+import { BrandMedia, brandWellClass } from "@/components/brand-media";
 import { HomeCarousel, type HomeSlide } from "@/components/home-carousel";
 import { ServiceMark } from "@/components/service-icon";
 import { ShelfExplorer } from "@/components/shelf-explorer";
@@ -16,7 +17,6 @@ import { HeroCar } from "@/components/hero-car";
 import { HeroTitle } from "@/components/hero-title";
 import { Link } from "@/i18n/navigation";
 import {
-  brandImage,
   brandName,
   getBrands,
   getCategories,
@@ -326,14 +326,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
           <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {brands.map((brand) => {
-              const image = brandImage(brand.slug);
               return (
               <li key={brand.id}>
                 <Link href={`/shop?brand=${brand.slug}`} className="shelf-card block">
-                  <span className="photo-well relative block aspect-[4/3] border-b border-line">
-                    {image ? (
-                      <PendingImage src={image} alt="" fill sizes="(min-width: 1024px) 20vw, 50vw" className="object-contain p-3" />
-                    ) : null}
+                  <span className={`${brandWellClass(brand)} relative block aspect-[4/3] border-b border-line`}>
+                    <BrandMedia brand={brand} alt="" sizes="(min-width: 1024px) 20vw, 50vw" />
                   </span>
                   <span className="flex flex-col items-center px-3 py-3 text-center">
                     <span className="text-sm font-semibold">{brand.name}</span>

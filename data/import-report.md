@@ -1,6 +1,6 @@
 # Catalog import
 
-Date: 2026-10-30
+Date: 2026-11-06
 
 - Source rows: 1285
 - Products written: 1228
