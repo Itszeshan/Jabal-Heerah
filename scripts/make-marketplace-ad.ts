@@ -1,4 +1,4 @@
-import { mkdirSync } from "node:fs";
+import { mkdirSync, readFileSync } from "node:fs";
 import { dirname } from "node:path";
 import sharp from "sharp";
 import { site } from "../config/site";
@@ -26,9 +26,50 @@ const H = 1080;
 const LOGO = "public/jabal-logo.png";
 const LOGO_WIDTH = 280;
 
-const PHOTO = { top: 335, height: 460, sourceTop: 25 };
+const PHOTO = { top: 335, height: 415, sourceTop: 30 };
 const PILLS = ["Car Paints", "Clear Coats", "Polishing", "Accident Repair"];
+const PILLS_TOP = 700;
 const panelTop = 866;
+
+/** Logos from `public/brands/<slug>.webp`; card colour follows `data/brand-logos.csv` like the website. */
+const BRANDS = ["challanger", "standox", "kapci", "numix"];
+const BRAND_CARD = { top: 762, width: 196, height: 66, gap: 16, left: 214, pad: 9 };
+type Box = { left: number; top: number; width: number; height: number };
+/**
+ * Stacked logos (mark above the name) are tiny in a wide card, so the mark and the name are set side by side.
+ * Boxes are in logo pixels (alpha bounds; `trim` does not work on these files' transparent edges).
+ */
+const STACKED: Record<string, { mark: Box; name: Box }> = {
+  kapci: { mark: { left: 0, top: 0, width: 209, height: 181 }, name: { left: 85, top: 210, width: 257, height: 122 } },
+};
+
+async function wideLogo(slug: string): Promise<Buffer> {
+  const file = `public/brands/${slug}.webp`;
+  const stacked = STACKED[slug];
+  if (!stacked) return sharp(file).trim({ threshold: 10 }).png().toBuffer();
+  const mark = await sharp(file).extract(stacked.mark).png().toBuffer();
+  const name = await sharp(file)
+    .extract(stacked.name)
+    .resize({ height: Math.round(stacked.mark.height * 0.8) })
+    .png()
+    .toBuffer();
+  const [m, n] = await Promise.all([sharp(mark).metadata(), sharp(name).metadata()]);
+  const gap = Math.round(stacked.mark.height * 0.12);
+  const w = (m.width ?? 0) + gap + (n.width ?? 0);
+  const h = Math.max(m.height ?? 0, n.height ?? 0);
+  return sharp({ create: { width: w, height: h, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } } })
+    .composite([
+      { input: mark, left: 0, top: Math.round((h - (m.height ?? 0)) / 2) },
+      { input: name, left: (m.width ?? 0) + gap, top: Math.round((h - (n.height ?? 0)) / 2) },
+    ])
+    .png()
+    .toBuffer();
+}
+
+function brandBackgrounds(): Map<string, string> {
+  const rows = readFileSync("data/brand-logos.csv", "utf8").trim().split(/\r?\n/).slice(1);
+  return new Map(rows.map((row) => row.split(",").map((cell) => cell.trim()) as [string, string]));
+}
 
 function facebookIcon(cx: number, cy: number): string {
   return `
@@ -73,6 +114,13 @@ const pillW = 240;
 const pillGap = 20;
 const pillsLeft = (W - (PILLS.length * pillW + (PILLS.length - 1) * pillGap)) / 2;
 
+const backgrounds = brandBackgrounds();
+const brandCards = BRANDS.map((slug, i) => ({
+  slug,
+  x: BRAND_CARD.left + i * (BRAND_CARD.width + BRAND_CARD.gap),
+  dark: backgrounds.get(slug) === "dark",
+}));
+
 const overlay = `
 <svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
   <defs>${sharedDefs}
@@ -92,11 +140,20 @@ const overlay = `
 
   ${PILLS.map((label, i) => {
     const x = pillsLeft + i * (pillW + pillGap);
-    const y = 800;
+    const y = PILLS_TOP;
     return `
   <rect x="${x}" y="${y}" width="${pillW}" height="46" rx="23" fill="${NAVY}" fill-opacity="0.85" stroke="${GOLD}" stroke-width="2"/>
   <text x="${x + pillW / 2}" y="${y + 31}" text-anchor="middle" font-family="${BODY}" font-size="23" font-weight="700" fill="#ffffff">${esc(label)}</text>`;
   }).join("")}
+
+  <text x="${BRAND_CARD.left - 22}" y="${BRAND_CARD.top + 28}" text-anchor="end" font-family="${HEAD}" font-size="22" fill="${GOLD}" letter-spacing="2">OUR</text>
+  <text x="${BRAND_CARD.left - 22}" y="${BRAND_CARD.top + 54}" text-anchor="end" font-family="${HEAD}" font-size="22" fill="${GOLD}" letter-spacing="2">BRANDS</text>
+  ${brandCards
+    .map(
+      (card) =>
+        `<rect x="${card.x}" y="${BRAND_CARD.top}" width="${BRAND_CARD.width}" height="${BRAND_CARD.height}" rx="10" fill="${card.dark ? "#1b1e22" : "#ffffff"}" stroke="${GOLD}" stroke-width="2"/>`,
+    )
+    .join("\n  ")}
 
   <polygon points="0,${panelTop - 8} ${W},${panelTop - 30} ${W},${panelTop - 20} 0,${panelTop + 2}" fill="${RED}"/>
   <polygon points="0,${panelTop + 2} ${W},${panelTop - 20} ${W},952 0,952" fill="url(#goldPanel)"/>
@@ -134,12 +191,29 @@ async function main() {
 
   const logo = await sharp(LOGO).resize({ width: LOGO_WIDTH }).png().toBuffer();
 
+  const boxW = BRAND_CARD.width - 2 * BRAND_CARD.pad;
+  const boxH = BRAND_CARD.height - 2 * BRAND_CARD.pad;
+  const brandLogos = await Promise.all(
+    brandCards.map(async (card) => {
+      const { data, info } = await sharp(await wideLogo(card.slug))
+        .resize(boxW, boxH, { fit: "inside" })
+        .png()
+        .toBuffer({ resolveWithObject: true });
+      return {
+        input: data,
+        left: Math.round(card.x + BRAND_CARD.pad + (boxW - info.width) / 2),
+        top: Math.round(BRAND_CARD.top + BRAND_CARD.pad + (boxH - info.height) / 2),
+      };
+    }),
+  );
+
   mkdirSync(dirname(outPath), { recursive: true });
   const info = await sharp(Buffer.from(backgroundSvg(W, H, 170)))
     .composite([
       { input: logo, left: Math.round((W - LOGO_WIDTH) / 2), top: 14 },
       { input: photo, left: 0, top: PHOTO.top },
       { input: Buffer.from(overlay), left: 0, top: 0 },
+      ...brandLogos,
     ])
     .png()
     .toFile(outPath);
