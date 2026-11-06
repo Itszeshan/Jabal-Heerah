@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PendingImage } from "@/components/pending-image";
-import { Clock, MapPin, Phone, Storefront, Wrench } from "@phosphor-icons/react/ssr";
+import { Clock, MapPin, Phone, Storefront, WhatsappLogo, Wrench } from "@phosphor-icons/react/ssr";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { site } from "../../../config/site";
 import { HomeCarousel, type HomeSlide } from "@/components/home-carousel";
@@ -194,6 +194,41 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <Container>{common("sampleBanner")}</Container>
         </p>
       ) : null}
+
+      <section className="bg-charcoal py-12 text-white md:py-16">
+        <Container className="grid items-center gap-8 md:grid-cols-[minmax(0,26rem)_1fr] md:gap-12">
+          <a href="/home/accident-repair-flyer.webp" target="_blank" rel="noopener noreferrer" className="mx-auto block w-full max-w-md">
+            <Image
+              src="/home/accident-repair-flyer.webp"
+              alt={t("accidentAlt")}
+              width={900}
+              height={1273}
+              sizes="(min-width: 768px) 26rem, 100vw"
+              className="h-auto w-full shadow-2xl"
+            />
+          </a>
+          <div>
+            <p className="text-sm font-semibold text-amber-300">{t("accidentLabel")}</p>
+            <h2 className="mt-3 max-w-lg text-3xl font-semibold tracking-tight md:text-4xl">{t("accidentTitle")}</h2>
+            <p className="mt-4 max-w-lg text-base leading-7 text-white/80">{t("accidentBody")}</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href={waUrl("Hello - accident car repair price (Jabal Al Heerah website)")}
+                className={buttonClass("primary")}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <WhatsappLogo size={18} weight="regular" aria-hidden />
+                {common("whatsapp")}
+              </a>
+              <a href={`tel:${site.phoneTel}`} className={buttonClass("inverse")}>
+                <Phone size={18} weight="regular" aria-hidden />
+                <span dir="ltr" className="tabular-nums">{site.phoneDisplay}</span>
+              </a>
+            </div>
+          </div>
+        </Container>
+      </section>
 
       <section className="py-12 md:py-16">
         <Container>

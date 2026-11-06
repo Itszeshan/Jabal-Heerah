@@ -17,20 +17,12 @@ export function localBusinessJsonLd(locale: Locale): Record<string, unknown> {
       addressRegion: site.address.addressRegion,
       addressCountry: site.address.addressCountry,
     },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
-        opens: "08:00",
-        closes: "13:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
-        opens: "16:00",
-        closes: "21:00",
-      },
-    ],
+    openingHoursSpecification: site.hours.slots.map((slot) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: site.hours.days,
+      opens: slot.opens,
+      closes: slot.closes,
+    })),
   };
 
   if (site.geo) {

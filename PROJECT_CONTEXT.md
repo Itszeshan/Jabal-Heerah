@@ -1,6 +1,6 @@
 # Project Context — Jabal Al Heerah Auto Paints
 
-Last updated: 2026-10-30
+Last updated: 2026-11-06
 
 ## What it is
 
@@ -36,6 +36,7 @@ Bilingual (English `/en`, Arabic `/ar`, RTL) shop website for **Jabal Al Heerah 
 | `scripts/import-ugarit.ts` | Main importer: source + overrides -> `content/*.json` |
 | `scripts/import-csv.ts` | Older/simple Excel CSV importer |
 | `scripts/fetch-images.ts` | Downloads product photos to `public/products/*.webp` |
+| `scripts/make-flyer.ts`, `marketing/` | Marketing flyers (not part of the site); text and phone come from `config/site.ts` |
 | `src/app/[locale]/...` | Pages: home, shop, shop/[category], product/[slug], cart, checkout, confirmation, services, services/[slug], brands, about, faq, contact |
 | `src/lib/catalog.ts` | Server-only data access layer for all content (swap point for CMS/Shopify later) |
 | `src/lib/cart.ts` | Cart in `localStorage` (`jah-cart-v1`) via `useSyncExternalStore` |
@@ -87,8 +88,32 @@ Bilingual (English `/en`, Arabic `/ar`, RTL) shop website for **Jabal Al Heerah 
 - Live Netlify deploys so far were **uploads** (`Deploy triggered by upload`, no commit ref), not GitHub-triggered. Pushing to GitHub alone does not update the live site unless the Netlify site is linked to the repo or a new deploy is uploaded.
 - Hydration warnings mentioning `data-cursor-ref` in the Next.js overlay come from Cursor's browser automation, not the site.
 
+## Facebook page (studied 2026-11-06, logged-out)
+
+Public page linked from `config/site.ts`: https://www.facebook.com/people/Jabal-Al-Heerah-Auto-Paints/61553530191955/ (title "Jabal Al Heerah Auto Paints | Sharjah"). Page ID `176743058847685`, created 7 Nov 2023. 35 followers, 0 following, 0 reviews, no ads running.
+
+Facts that do **not** match the site (do not copy onto the site without the owner confirming):
+- Category was "Automation Service" (fixed, see below).
+- Hours: Mon–Thu and Sat–Sun 8:30 AM–1:30 PM and 3:30–9:00 PM, Friday closed. Owner confirmed on 2026-11-06 that these Facebook hours are correct; leave them as they are. The site now uses the same hours (see work log). The Google Maps listing still says 8 AM–1 PM and 4–9 PM and must be updated by the owner.
+- Fixed on 2026-11-06 (logged in as page admin in the Cursor browser): categories are now Vehicle parts shop (shown on the page), Vehicle body shop, Vehicle detailing service. "Automation service" removed. Services ("Specialities", free text, max 10): Colour matching, Auto paint and refinish supplies, In-store shopping, Delivery, Car denting and painting, In-store pickup, Polishing and compounding, Scratch and bumper repair, Car detailing. Removed Online booking, Takeout, Contactless delivery, Curbside pickup. Hours not touched.
+- Address is only "Industrial Area 4, Sharjah" (no 161 Sheikh Khalifa Bin Zayed St). Service area: Emirate of Sharjah.
+- Emails: `jabalalheerahautopaints@gmail.com` on the page; shop sign photo also shows `malik_salman6@yahoo.com`. Site has no email field.
+- Instagram `jabalalheerahautopaints` is on the page; `site.socials.instagram` is still empty. TikTok `jabal_al_heerah_paints_1` matches the site.
+- Website: owner added `https://jabalheerah.ae/` on 2026-11-06 (shows publicly under "Websites and social links"; root redirects to `/en` or `/ar` by browser language). Phone matches: 052 853 3654.
+- About claims the company was established in 2019 (founding date on the page: 20 Nov 2019) and serves Dubai and the UAE. `config/site.ts` says not to add years in business without the owner's facts.
+- Services toggles look like Facebook defaults: Delivery, Contactless delivery, Takeout, Online booking, Curbside pickup, In-store pickup, In-store shopping. Languages: English, Urdu, Hindi, Arabic.
+
+Intro: Sharjah paint correction, colour matching, refinishing, detailing supplies, car care; "DM for a quote." Cover (marked AI content, 21 Sep 2026) is the logo car plus QR codes for Facebook, call, WhatsApp, and location; brands readable on it include MaxMeyer, Numix, EasiCoat. Profile photo is the shop sign. Recent posts are sparse: profile photo 22 Sep 2026, cover 21 Sep 2026, Eid greeting 27 May 2026 (1 like), three Sonax product posts on 24 Mar 2026 (upholstery cleaner, wheel cleaner, engine cleaner). Ten reels visible, views about 8–283 (top reel 283); clips are people talking, Sonax cans, and a polishing machine. Logged-out Facebook hides anything past a login wall, so older posts were not fully visible.
+
 ## Work log
 
+- 2026-11-06: Studied the public Facebook page (logged out). Notes are in the "Facebook page" section above. No site code changed.
+- 2026-11-06: Owner added the website to the Facebook page, first as `https://jabalheerah.ae/en`, then changed it to `https://jabalheerah.ae/`. Checked logged out: it shows under About > Websites and social links; the root returns 200 and opens `/en` for English browsers and `/ar` for Arabic browsers.
+- 2026-11-06: Site hours changed to the owner-confirmed Facebook hours: Sat–Thu 8:30 AM–1:30 PM and 3:30–9 PM, Friday closed. `config/site.ts` `hours` (en/ar long and short text) plus new `hours.days` and `hours.slots` (24-hour times); `src/lib/schema.ts` JSON-LD opening hours now read `site.hours.slots` instead of hard-coded times; `content/faq.json` pickup answer (en/ar) updated. The FAQ text still repeats the hours by hand, so change it too if hours change again. `tsc --noEmit` passed. Not deployed.
+- 2026-11-06: Facebook page category and services fixed in the Cursor browser (details in the "Facebook page" section). Checked after reload: header shows "Vehicle parts shop", Services list saved.
+- 2026-11-06: Made an "Accident car repair service available, good price" flyer for social media and print: `marketing/accident-repair-flyer.png` (1240x1754, A4 portrait at 150 dpi). The photo `marketing/accident-before-after.jpg` (1024x768, AI-generated: one white sedan, damaged left half, repaired right half, split at the middle, no text) is composed by new `scripts/make-flyer.ts` (`npx tsx scripts/make-flyer.ts marketing/accident-before-after.jpg [out.png]`): logo on top, headline "ACCIDENT CAR REPAIR / SERVICE AVAILABLE" plus an Arabic line, the photo with red BEFORE and green AFTER labels, a gold "GOOD PRICE" badge, a services line, and a gold call/WhatsApp bar. Phone, address and domain are read from `config/site.ts`, so they are always exact and update with it. Not used on the website.
+- 2026-11-06: Owner found the flyer too basic and asked for a 2025 Toyota Camry. New photo `marketing/camry-before-after.jpg` (AI-generated red 2025 Camry, same split; the old white-sedan photo was removed). `scripts/make-flyer.ts` redesigned: corner gold/red accents and a faint diagonal line pattern, gold-gradient "ACCIDENT" with "CAR REPAIR" under it and a slanted red "SERVICE AVAILABLE" banner, full-width photo that fades into the background top and bottom, slanted BEFORE/AFTER tags with a gold arrow badge on the split line, a rotated gold starburst "GOOD PRICE" seal, four check-mark features, and a slanted gold contact panel with phone and WhatsApp icons, plus pin/address and globe/domain at the bottom. Command: `npx tsx scripts/make-flyer.ts marketing/camry-before-after.jpg`.
+- 2026-11-06: Owner asked to post the flyer on the site and social media. Site: new dark section on the home page right under the hero (`src/app/[locale]/page.tsx`): flyer image `public/home/accident-repair-flyer.webp` (900x1273, made from the PNG with sharp; links to the full image), label/title/body from new `home.accidentLabel`, `accidentTitle`, `accidentBody`, `accidentAlt` messages (en/ar), a WhatsApp button (message "Hello - accident car repair price (Jabal Al Heerah website)") and a call button. A carousel slide was tried first, but the portrait flyer was too small there (260px tall box on phones). If the flyer is regenerated, re-create the webp too. `tsc` and local `npm run build` passed. Netlify deploy `6aeda65974c5e14f1a3a3797` was **skipped again: "account credit usage exceeded"**, so nothing new is live (all pending work, including the hours change, still waits for credits). Facebook: posting could not be automated. The flyer file cannot be attached from the agent (Facebook's CSP blocks loading it in the tab, bypassing CSP was refused as a security bypass, computer use was not available), so the owner posts it by hand with the caption given in chat. Instagram is not linked to the site (`instagram: ""`), TikTok needs its app.
 - 2026-10-30: Product pages opened at the previous scroll position (often the bottom) because `scroll-behavior: smooth` on `html` kept the old scroll animation going after a client navigation. `ScrollToTop` on the product page now forces an instant scroll to the top for half a second. `overflow-anchor: none` stops the footer from pinning the view, and `<html data-scroll-behavior="smooth">` matches Next.js route-scroll handling. On screens below `lg`, the product photo is `order-first` so the page starts with the picture; desktop stays image-left / details-right. The page-enter motion no longer shifts the whole page down by 8px.
 - 2026-10-27: Studied the full project and created this context file. No code changes.
 - 2026-10-27: Connected Netlify MCP (remote) and verified access to the account and site.
