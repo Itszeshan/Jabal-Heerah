@@ -32,8 +32,8 @@ const PILLS_TOP = 700;
 const panelTop = 866;
 
 /** Logos from `public/brands/<slug>.webp`; card colour follows `data/brand-logos.csv` like the website. */
-const BRANDS = ["challanger", "standox", "kapci", "numix"];
-const BRAND_CARD = { top: 762, width: 196, height: 66, gap: 16, left: 214, pad: 9 };
+const BRANDS = ["challanger", "standox", "kapci", "numix", "sonax"];
+const BRAND_CARD = { top: 762, width: 158, height: 66, gap: 12, left: 214, pad: 9 };
 type Box = { left: number; top: number; width: number; height: number };
 /**
  * Stacked logos (mark above the name) are tiny in a wide card, so the mark and the name are set side by side.
