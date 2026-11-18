@@ -20,17 +20,17 @@ function maskStyle(src: string): CSSProperties {
 }
 
 /**
- * Where the tyres touch the floor in the car images (971x672), in percent of its box: far front (11.3%, 93.2%),
- * near front (68%, 98.2%) and rear (94.2%, 86.9%). The rear tyre sits higher because it is further away.
+ * Where the tyres touch the floor in the car images (971x660), in percent of its box: far front (11.3%, 94.8%),
+ * near front (67.5%, 99.7%) and rear (93.2%, 80.5%). No side shear — that made the body look wavy.
  */
 const contactShadow: CSSProperties = {
   backgroundImage: [
-    "radial-gradient(5.5% 1% at 68% 98%, rgb(0 0 0), transparent)",
-    "radial-gradient(3.5% 0.9% at 94.2% 86.8%, rgb(0 0 0), transparent)",
-    "radial-gradient(5% 0.9% at 11.3% 93.1%, rgb(0 0 0), transparent)",
-    "radial-gradient(10% 2.5% at 68% 97.5%, rgb(0 0 0 / 0.9), transparent)",
-    "radial-gradient(7% 2.5% at 93.7% 86.9%, rgb(0 0 0 / 0.95), transparent)",
-    "radial-gradient(9% 2.4% at 11.3% 92.9%, rgb(0 0 0 / 0.9), transparent)",
+    "radial-gradient(5.5% 1% at 67.5% 99.5%, rgb(0 0 0), transparent)",
+    "radial-gradient(3.5% 0.9% at 93.2% 80.4%, rgb(0 0 0), transparent)",
+    "radial-gradient(5% 0.9% at 11.3% 94.7%, rgb(0 0 0), transparent)",
+    "radial-gradient(10% 2.5% at 67.5% 99%, rgb(0 0 0 / 0.9), transparent)",
+    "radial-gradient(7% 2.5% at 92.7% 80.5%, rgb(0 0 0 / 0.95), transparent)",
+    "radial-gradient(9% 2.4% at 11.3% 94.5%, rgb(0 0 0 / 0.9), transparent)",
   ].join(", "),
 };
 
@@ -39,9 +39,9 @@ const floorShade: CSSProperties = {
   backgroundImage: "radial-gradient(50% 50% at 55% 40%, rgb(0 0 0 / 0.6), rgb(0 0 0 / 0.25) 60%, transparent)",
 };
 
-/** Floor under the body, joining the three visible contact points and the hidden far rear tyre (about 37.6%, 81.8%). */
+/** Floor under the body, joining the three visible contact points and the hidden far rear tyre (about 37%, 75.6%). */
 const bodyShadowShape: CSSProperties = {
-  clipPath: "polygon(4% 91.4%, 11.3% 94.9%, 68% 99%, 96% 87.9%, 92% 84.4%, 37.6% 80.7%)",
+  clipPath: "polygon(4% 93%, 11.3% 96.5%, 67.5% 100.5%, 95% 81.5%, 91% 78%, 37% 74.5%)",
 };
 
 /**
@@ -49,8 +49,8 @@ const bodyShadowShape: CSSProperties = {
  * under the near front tyre: skewY(angle) scaleY(-1) mirrors about a line whose slope is half of tan(angle).
  */
 const reflectionHalves: CSSProperties[] = [
-  { clipPath: "inset(0 32% 0 0)", transformOrigin: "68% 98.2%", transform: "skewY(7deg) scaleY(-1)" },
-  { clipPath: "inset(0 0 0 68%)", transformOrigin: "68% 98.2%", transform: "skewY(-30.8deg) scaleY(-1)" },
+  { clipPath: "inset(0 32.5% 0 0)", transformOrigin: "67.5% 99.7%", transform: "skewY(6.7deg) scaleY(-1)" },
+  { clipPath: "inset(0 0 0 67.5%)", transformOrigin: "67.5% 99.7%", transform: "skewY(-45.5deg) scaleY(-1)" },
 ];
 
 const reflectionFade: CSSProperties = {
@@ -120,7 +120,7 @@ export function HeroCar({
 
   return (
     <div className="relative w-full lg:absolute lg:end-4 lg:bottom-[11%] lg:w-[48%]">
-      <div className="relative aspect-[971/672] w-full">
+      <div className="relative aspect-[971/660] w-full">
         <div className="absolute -inset-x-[6%] top-[72%] h-[40%] blur-lg" style={floorShade} aria-hidden />
         {reflectionHalves.map((half, index) => (
           <div

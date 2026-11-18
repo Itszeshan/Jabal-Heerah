@@ -1,5 +1,3 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="971" height="660" viewBox="0 0 971 660">
-  <!-- Roof panel of the Jetour T2 cut-out above the windscreen and side windows; painted black for every colour.
-       Roof rails are left out by the paint mask, so they stay silver. -->
   <polygon points="290,0 971,0 971,40 905,57 880,53 708,51 704,45 306,47 290,52" fill="#000"/>
 </svg>

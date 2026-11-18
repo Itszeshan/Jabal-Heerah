@@ -522,5 +522,17 @@
       "ar": ""
     },
     "count": 16
+  },
+  {
+    "id": "zeal",
+    "slug": "zeal",
+    "name": "Zeal",
+    "description": {
+      "en": "",
+      "ar": ""
+    },
+    "count": 0,
+    "logo": "/brands/zeal.webp",
+    "logoBackground": "light"
   }
 ]

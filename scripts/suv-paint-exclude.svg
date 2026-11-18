@@ -1,26 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="971" height="660" viewBox="0 0 971 660">
-  <!-- Parts of the Jetour T2 cut-out (public/home/suv.webp) that are not body paint. Measured with scripts/grid-crop.ts.
-       Roof, mirror caps, door handles and fuel flap are body colour and stay paintable. -->
   <g fill="#000">
-    <!-- Roof rails -->
     <polygon points="365,0 580,0 580,22 365,26"/>
     <polygon points="698,0 875,0 878,30 700,32"/>
-    <!-- Windscreen with A-pillars, and the side windows down to the belt line -->
     <polygon points="300,47 712,45 712,196 208,196"/>
     <polygon points="708,44 905,46 912,100 912,140 900,160 830,172 828,152 820,146 810,143 750,143 741,147 737,158 733,200 715,198 706,120"/>
-    <!-- Headlights and upper grille with its chrome bar -->
     <polygon points="8,293 60,291 200,297 300,299 400,300 480,297 540,294 562,294 566,300 566,384 540,386 480,389 300,388 200,389 100,386 60,380 20,376 8,370"/>
-    <!-- Lower grille and corner vents with fog lights -->
     <polygon points="78,405 414,405 414,480 78,480"/>
     <polygon points="17,392 38,392 38,469 30,469 24,467 19,463 17,462"/>
     <polygon points="535,401 557,401 557,486 528,486 528,465 535,463"/>
-    <!-- Silver skid plate, black lower lip and the far front tyre -->
     <polygon points="0,508 78,506 80,476 416,476 418,507 575,507 580,660 0,660"/>
-    <!-- Near front tyre and wheel well -->
     <polygon points="722,335 742,340 752,380 755,480 748,560 735,620 700,660 600,660 578,610 578,540 600,505 632,500 645,450 656,400 673,360 696,343"/>
-    <!-- Rear tyre and wheel well -->
     <polygon points="933,298 962,290 971,300 971,520 940,535 870,535 852,500 855,450 882,430 898,413 905,360 915,322 936,300"/>
-    <!-- Black sill and side step -->
     <polygon points="752,458 875,415 905,425 905,445 750,512"/>
   </g>
 </svg>

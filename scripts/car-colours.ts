@@ -25,20 +25,16 @@ const SPECULAR_FROM = 225;
 const SPECULAR_TO = 252;
 const SPECULAR_MAX = 0.75;
 /**
- * The render's camera is higher than the hero stage's, so its rear tyre touched the floor right at the stage
- * horizon and looked like it floated. The side of the car is sheared down behind the front corner: zero at the
- * corner, `SIDE_DROP` px at the rear tyre's contact point (x `REAR_CONTACT_X`). The front face does not move.
- * The corner runs from the A-pillar (x `CORNER_TOP`, above y `CORNER_TOP_Y`) to the near front tyre's contact
- * (x `CORNER_BOTTOM`, below y `CORNER_BOTTOM_Y`), so the windscreen and the front tyre's floor point stay put.
+ * Side shear used to drop the rear tyre onto the stage, but it made the Jetour body look wavy. Leave at 0 so the
+ * cut-out keeps its original shape. Constants stay for documentation if a future car needs the shear again.
  */
-const SIDE_DROP = 50;
+const SIDE_DROP = 0;
 const REAR_CONTACT_X = 905;
 const CORNER_TOP = 712;
 const CORNER_TOP_Y = 190;
 const CORNER_BOTTOM = 650;
 const CORNER_BOTTOM_Y = 330;
-/** Rows added under the cut-out, so the near front tyre's sheared back half is not cut off. */
-const BOTTOM_PAD = 12;
+const BOTTOM_PAD = 0;
 
 function toLinear(value: number): number {
   const v = value / 255;
@@ -139,8 +135,9 @@ async function main() {
       if (r > 0) paint(out, p, roofTarget, k * r);
     }
     const file = path.join("public", carImage(colour.id));
-    const result = await sharp(lowerSide(out, width, height), {
-      raw: { width, height: height + BOTTOM_PAD, channels: 4 },
+    const painted = SIDE_DROP === 0 ? out : lowerSide(out, width, height);
+    const result = await sharp(painted, {
+      raw: { width, height: height + (SIDE_DROP === 0 ? 0 : BOTTOM_PAD), channels: 4 },
     })
       .sharpen({ sigma: 0.6 })
       .webp({ quality: 88, alphaQuality: 100 })
