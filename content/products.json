@@ -49311,7 +49311,9 @@
       "en": "General-purpose lacquer thinner that dissolves paint and reduces its viscosity, cleans up spills and splatters, and removes paint from rollers and brushes.",
       "ar": "مخفف لاكر متعدد الاستخدامات يذيب الدهان ويقلل لزوجته، ينظف البقع والتناثرات، ويزيل الدهان من البكرات والفرش."
     },
-    "images": [],
+    "images": [
+      "/products/alva-lacquer-thinner.webp"
+    ],
     "variants": [
       {
         "id": "1480",
@@ -49374,7 +49376,9 @@
       "en": "Premium grade thinner for automotive top coat and base coat, formulated for all types of automobile paint.",
       "ar": "مخفف ممتاز للطبقة العلوية والقاعدية للسيارات، مُصنَّع لجميع أنواع دهانات السيارات."
     },
-    "images": [],
+    "images": [
+      "/products/alva-thinner-yellow-3-6l.webp"
+    ],
     "variants": [
       {
         "id": "1483",
